@@ -34,4 +34,4 @@ CodeEaters
 
 8. Na próxima janela selecione todas as branches.
 
-9. Na proxima janela selecione a opção **Import all existing projects after clone finishes**
+9. Na proxima janela selecione a opção **Import all existing projects after clone finishes**.
