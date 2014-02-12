@@ -5,7 +5,6 @@ CodeEaters
 
 * **USE** o sistema de issues.
 
-* **LEMBRE-SE** de trocar de workspace quando for trabalhar nos projetos do AM.
 
 * Verbos nos nomes de variáveis, métodos e etc. devem ser em INGLÊS para evitar erros e confusões relacionadas a conjugação verbal. Ex: fixCodigo; sortCarros; submitUser.
 
@@ -35,3 +34,8 @@ CodeEaters
 8. Na próxima janela selecione todas as branches.
 
 9. Na proxima janela selecione a opção **Import all existing projects after clone finishes**.
+
+==
+###Workflow de branches:
+
+![Branches Workflow](http://i.imgur.com/xoBPYIy.jpg "Branches Workflow")
