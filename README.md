@@ -29,7 +29,7 @@ CodeEaters
 
 5. Abra o Eclipse, vá em **Help** > **Eclispse Marketplace**. Procure por **eGit**. Instale e marque as 3 caixas na tela seguinte. Após terminar a instalação você precisará reiniciar o Eclipse.
 
-6. Depois de reiniciar o Eclipse, vá em **Window** > **Show View** > **Other** > **Git** > **Git** Repositories. 
+6. Depois de reiniciar o Eclipse, vá em **Window** > **Show View** > **Other** > **Git** > **Git Repositories**. 
 
 7. Com a nova janela aberta, clique em Clone a Git Repository. Insira a URI: **https://github.com/VyMajoris/CodeEaters** (certifique-se que o protocolo é HTTPS) e colque o seu **usuário** e **senha**.
 
