@@ -30,6 +30,7 @@ public class TerminalConsulta {
 				print(codigo);
 				sc.close();
 	}
+	public static void say(){System.out.println("teste2");}
 	public static void print(int codigo){
 		
 			EstoqueBO estoqueBO = new EstoqueBO();
@@ -37,6 +38,7 @@ public class TerminalConsulta {
 			
 			ProdutoTO produto = estoqueBO.consultarProduto(codigo);
 			System.out.println("Código: " + produto.getCodigo());
+			say();
 			System.out.println("Descrição: " + produto.getDescricao());
 			System.out.println("Preço: " + df.format(produto.getPreco()));
 			System.out.println("Estoque: " + produto.getEstoque());
