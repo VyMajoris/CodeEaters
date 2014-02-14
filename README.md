@@ -41,13 +41,10 @@ CodeEaters
 
 ###Trabalhando com branches
 
-1. Atualize o seu repositório local com o remote clicando com o botão direito no repositório e selecionando **pull*. (Eclipse)
 
-2. Abra o **dropdown de branches**, depois o dropdown de **remote tracking** e clique com o botão direito na branch desejada. Selecione **checkout** e depois **checkout as new local branch**
-
-3. Não altere nada na proxima tela e de finish.
-
-4. Faça as alterações ou crie os projetos necessários e quando terminar, salve (ctrl+S). Clique com obotão direito no projeto(ou no arquivo) a ser upado, selecione **Team** > **commit**. Selecione os arquvos desejados(normalmente e por padrão, selecione todos) e clique em **Commit and Push**.
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=KfeqnernMmE
+" target="_blank"><img src="http://img.youtube.com/vi/KfeqnernMmE/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 
 
