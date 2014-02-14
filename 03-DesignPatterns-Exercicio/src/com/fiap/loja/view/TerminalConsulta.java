@@ -11,39 +11,40 @@ import com.fiap.loja.singleton.PropertySingleton;
 import com.fiap.loja.to.ProdutoTO;
 
 public class TerminalConsulta {
-
+	static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	static DecimalFormat df = new DecimalFormat("R$#,###.00");
 	public static void main(String[] args) {
+		
+	}
+	
+	private static void setup() {
 		Scanner sc = new Scanner(System.in);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		DecimalFormat df = new DecimalFormat("R$#,###.00");
 		
-		//Recuperar o nome da loja no arquivo de propriedades
-		String nomeLoja = PropertySingleton.getInstance().getProperty("nome_loja");
+				String nomeLoja = PropertySingleton.getInstance().getProperty("nome_loja");
+				
+				System.out.println(nomeLoja + "              Data "+ sdf.format(Calendar.getInstance().getTime()) );
+				System.out.println("*****************************************");
+				//teste
+				System.out.println("Código do produto: ");
+				int codigo = sc.nextInt();
+				print(codigo);
+				sc.close();
+	}
+	public static void print(int codigo){
 		
-		//Imprimir o cabeçalho com a data formatada
-		System.out.println(nomeLoja + "              Data " 
-						+ sdf.format(Calendar.getInstance().getTime()) );
-		System.out.println("*******************************************");
-		
-		//Ler o código 
-		System.out.println("Código do produto: ");
-		int codigo = sc.nextInt();
-		
-		//Instancia a classe de negócio
-		EstoqueBO estoqueBO = new EstoqueBO();
-		
+			EstoqueBO estoqueBO = new EstoqueBO();
 		try {
-			//Tenta buscar o produto, se não encontrar lança exception
+			
 			ProdutoTO produto = estoqueBO.consultarProduto(codigo);
 			System.out.println("Código: " + produto.getCodigo());
 			System.out.println("Descrição: " + produto.getDescricao());
 			System.out.println("Preço: " + df.format(produto.getPreco()));
 			System.out.println("Estoque: " + produto.getEstoque());
+			
 		} catch (ProdutoNaoEncontradoException e) {
 			System.out.println("Produto Não Encontrado");
 		}
 		
-		sc.close();
 	}
 }
 
