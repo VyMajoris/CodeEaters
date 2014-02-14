@@ -23,7 +23,7 @@ public class TerminalConsulta {
 				String nomeLoja = PropertySingleton.getInstance().getProperty("nome_loja");
 				
 				System.out.println(nomeLoja + "              Data "+ sdf.format(Calendar.getInstance().getTime()) );
-				System.out.println("*******************************************");
+				System.out.println("******************teste******************");
 				
 				System.out.println("Código do produto: ");
 				int codigo = sc.nextInt();
