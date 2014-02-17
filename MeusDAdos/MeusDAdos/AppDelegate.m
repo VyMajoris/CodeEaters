@@ -4,7 +4,7 @@
 //
 //  Created by VyMajoris on 2/17/14.
 //  Copyright (c) 2014 VyMajoris. All rights reserved.
-// TESTE COM O XCODE5
+// TESTE COM O XCODE5i
 
 #import "AppDelegate.h"
 
