@@ -1,3 +1,5 @@
+//TESTE SVN
+
 package com.fiap.loja.view;
 
 import java.text.DecimalFormat;
