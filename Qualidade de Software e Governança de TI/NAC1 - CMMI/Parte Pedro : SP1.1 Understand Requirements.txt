@@ -2,7 +2,11 @@ SP 1.1 Entendendo Requisitos
       Desenvolver um entendimento com os provedores de requisitos para melhor entendimento sobre o mesmo.
       
   
-      À medida que o projeto amadurece e os requisitos são identificados, todas as atividades ou disciplinas receberão 'requerimentos'**.Para evitar requisitos não desejados, se estabelece um critério, uma forma oficial ou apropriada para estabelecer os requisitos. Aqueles que recebem a exigencia do fornecedor para realizar analises e garantir a compreensão exata do requisito. O Resultado dessas analises e dialogos é um conjunto de requerimentos.
+      À medida que o projeto amadurece e os requisitos são identificados, 
+      todas as atividades ou disciplinas receberão 'requerimentos'**.Para evitar requisitos não desejados,
+      se estabelece um critério, uma forma oficial ou apropriada para estabelecer os requisitos. Aqueles que recebem 
+      a exigencia do fornecedor para realizar analises e garantir a compreensão exata do requisito. O Resultado dessas 
+      analises e dialogos é um conjunto de requerimentos.
       
       Exemnplo produtos de trabalho
     1. Lista de critérios para ditinguir fornecedores apropriados de requisitos.
