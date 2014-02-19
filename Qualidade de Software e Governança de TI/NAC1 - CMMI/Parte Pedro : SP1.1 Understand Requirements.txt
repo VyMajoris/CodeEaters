@@ -1,0 +1,35 @@
+SP 1.1 Entendendo Requisitos
+      Desenvolver um entendimento com os provedores de requisitos para melhor entendimento sobre o mesmo.
+      
+  
+      À medida que o projeto amadurece e os requisitos são identificados, todas as atividades ou disciplinas receberão 'requerimentos'**.Para evitar requisitos não desejados, se estabelece um critério, uma forma oficial ou apropriada para estabelecer os requisitos. Aqueles que recebem a exigencia do fornecedor para realizar analises e garantir a compreensão exata do requisito. O Resultado dessas analises e dialogos é um conjunto de requerimentos.
+      
+      Exemnplo produtos de trabalho
+    1. Lista de critérios para ditinguir fornecedores apropriados de requisitos.
+    2. Critério para aceitação e validação de requisitos.
+    3. Resultado da analise dos critérios.
+    4. Conjunto de requisitos aprovados.
+      Subpráticas
+    1. Estabelecer uma critéria para distinguir apropriados de requisitos.
+    2. Estabelecer objetivos para aceitação e avaliação dos requisitos.
+    <A falta de critérios de avaliação e de aceitação muitas vezes resulta na verificação inadequada,
+desperdício, ou rejeição do cliente.>
+
+    Exemplos de avaliação e aceitação, incluem:
+    *Claramente e devidamente declarado.
+    *Completo.
+    *Consistente um com o outro.
+    *Excepcionalmente identificado.
+    *Coerente com abordagem aproximada e qualidade atribuida à propriedade.
+    *Apropriado para implementação.
+    *Verificavél (Ex.: Testavél).
+    *Rastreável.
+    *Atingível.
+    *Amarrado aos valores do negócio.
+    *Identificado como prioridade para o cliente.
+    
+    3.Analisar os requisitos para garantir que os critérios estabelecidos sejam cumpridos.
+    4.Chegar a um entendimento dos requisitos com os clientes, para que os participantes do projeto possam comprometer-se.
+    
+    
+    ---
