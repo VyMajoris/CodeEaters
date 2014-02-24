@@ -1,0 +1,30 @@
+SP 1.3 Gerenciar mudanças de requisitos 
+Gerenciar as mudanças nos requisitos à medida que evoluem durante o projeto.
+ 
+Consulte a área do processo para Gerenciamento de Configuração, a fim de obter mais informações 
+sobre o acompanhamento e controle de mudanças. 
+
+Requisitos se alteram por uma variedade de razões. Com as necessidades de mudanças e a 
+sequência do projeto, as mudanças precisam ser feitas nos requisitos existentes. 
+É essencial gerenciar os novos requisitos e alterações de forma eficiente e eficaz. 
+Para analisar de forma eficaz do impacto dessas mudanças, é necessário que a fonte de cada 
+requisito seja conhecida, e as razões para a mudança esteja documentada. O projeto precisa
+do controle sobre as medidas apropriadas de volatilidade dos requisitos, para julgar se a
+abordagem nova ou analisada para mudar o controle é necessária. 
+
+Exemplo Produtos de Trabalho  
+1. Requisitos para alterar petições 
+2. Requisitos para alterar relatórios de impacto
+3. Requisitos de status 
+4. Requisitos de banco de dados
+
+Sub práticas 
+1. Documentar todos os requisitos e mudanças que são dadas ou gerados no projeto.
+2. Sustentar os requisitos alterando sua história, incluindo a fundamentação para essas mudanças.
+Manter o histórico de alterações ajuda a controlar a volatilidade de requisitos. 
+3. Avaliar o impacto das mudanças nos requisitos do ponto de vista das partes interessadas. 
+Alterações nos requisitos que afetam a arquitetura do produto pode afetar muitas partes interessadas.
+4. Faça requisitos e alterações nos dados disponíveis para o projeto.
+
+
+
