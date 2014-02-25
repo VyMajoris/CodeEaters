@@ -5,16 +5,16 @@ SP 1.1 Entendendo Requisitos
       À medida que o projeto amadurece e os requisitos são identificados, 
       todas as atividades ou disciplinas receberão 'requerimentos'**.Para evitar requisitos não desejados,
       se estabelece um critério, uma forma oficial ou apropriada para estabelecer os requisitos. Aqueles que recebem 
-      a exigencia do fornecedor para realizar analises e garantir a compreensão exata do requisito. O Resultado dessas 
-      analises e dialogos é um conjunto de requerimentos.
+      a exigência do fornecedor para realizar analises e garantir a compreensão exata do requisito. O Resultado dessas 
+      analises e diálogos é um conjunto de requerimentos.
       
-      Exemnplo produtos de trabalho
-    1. Lista de critérios para ditinguir fornecedores apropriados de requisitos.
+      Exemplo produtos de trabalho
+    1. Lista de critérios para distinguir fornecedores apropriados de requisitos.
     2. Critério para aceitação e validação de requisitos.
     3. Resultado da analise dos critérios.
     4. Conjunto de requisitos aprovados.
       Subpráticas
-    1. Estabelecer uma critéria para distinguir apropriados de requisitos.
+    1. Estabelecer um critério para distinguir apropriados de requisitos.
     2. Estabelecer objetivos para aceitação e avaliação dos requisitos.
     <A falta de critérios de avaliação e de aceitação muitas vezes resulta na verificação inadequada,
 desperdício, ou rejeição do cliente.>
@@ -24,9 +24,9 @@ desperdício, ou rejeição do cliente.>
     *Completo.
     *Consistente um com o outro.
     *Excepcionalmente identificado.
-    *Coerente com abordagem aproximada e qualidade atribuida à propriedade.
+    *Coerente com abordagem aproximada e qualidade atribuída à propriedade.
     *Apropriado para implementação.
-    *Verificavél (Ex.: Testavél).
+    *Verificável (Ex.: Testável).
     *Rastreável.
     *Atingível.
     *Amarrado aos valores do negócio.
@@ -39,6 +39,16 @@ desperdício, ou rejeição do cliente.>
     ---
       ** Verificar
       
-      Fazer Resumo
+      Tradução 0.0.2 - 25/02/14
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Resumo para o trabalho:
+
+      SP 1.1 Entendendo Requisitos
       
-      Tradução 0.0.1
+            Elaborar um estudo de caso detalhado com os clientes para melhor entendimento dos requisitos.
+            
+            Os requisitos ' aparecem ' conforme a ideia do projeto amadurece, com isso, um diálogo claro com o cliente
+            e um bom entendimento, evitará aparecer requisitos não desejados no meio do processo.
