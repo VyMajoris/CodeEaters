@@ -1,0 +1,47 @@
+<b>Manter Rastreabilidade Bidirecional dos Requisitos<\b>
+<i>Manter a rastreabilidade bidirecional entre os requisitos e produtos de trabalho.</i>
+
+
+A intenção desta prática específica é manter a rastreabilidade bidirecional de requisitos.
+(Veja a definição de "rastreabilidade bidirecional" no glossário.) Quando os requisitos 
+são bem gerenciados, a rastreabilidade pode ser estabelecida a partir de uma exigência de 
+origem para seus requisitos de nível mais baixo e a partir desses requisitos de nível inferior
+até as suas necessidades de origem. Tal rastreabilidade bidirecional ajuda a determinar se 
+todos os requisitos fonte foram completamente tratados e se todos os requisitos de nível inferior 
+pode ser atribuída a uma fonte válida.
+
+Requisitos rastreabilidade abrange também relacionamentos com outras entidades, tais 
+como produtos de trabalho intermediários e finais, mudanças na documentação de projeto, 
+e planos de teste. A rastreabilidade pode abranger relacionamentos horizontais, como 
+interfaces de diâmetro, assim como as relações verticais. A rastreabilidade é particularmente 
+necessária quando se avalia o impacto das mudanças de requisitos em atividades de projeto
+e produtos de trabalho.
+
+Exemplos do que aspectos de rastreabilidade a serem considerados: 
+
+Escopo de rastreabilidade: Os limites dentro dos quais é necessária a rastreabilidade.
+
+Definição de rastreabilidade: Os elementos que necessitam de relações lógicas
+
+Tipo de rastreabilidade: Quando horinzontal e vertical a rastre	ablidade é necessaria.
+
+Tal rastreabilidade bidirecional nem sempre é automatizado. Isso pode ser feito manualmente
+usando planilhas, bancos de dados e outras ferramentas comuns.
+
+Exemplo Produtos de Trabalho 
+
+1. Matriz de rastreabilidade 
+2. Requisitos do sistema de rastreamento 
+
+Sub-práticas 
+ 
+1. Manter a rastreabilidade dos requisitos para assegurar que a fonte de nível inferior 
+(ou seja, derivados) esteja documentada.
+
+2. Manter a rastreabilidade de um requisito para alocação de produtos de trabalho. 
+Produtos de trabalho em função da rastreabilidade para serem mantidos necessitam incluir a 
+arquitetura, os componentes do produto, iterações de desenvolvimento (ou incrementos), funções, 
+interfaces de objetos, pessoas, processos e outros produtos de trabalho. 
+
+3. Gerar uma matriz de rastreabilidade de requisitos.
+
