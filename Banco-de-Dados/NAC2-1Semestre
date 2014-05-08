@@ -79,3 +79,14 @@ DECLARE
   end loop;
   
 END;
+
+
+
+/*
+4-	Desenvolva uma instrução SQL que exiba a quantidade total de locações realizadas por data do pedido. 
+Exiba somente as datas que tenham mais de 3 locações realizadas por dia. 
+*/
+
+select dt_locacao, count(cd_cliente) from loc_pedido_locacao
+HAVING count(cd_cliente) > 3
+group by dt_locacao;
