@@ -90,3 +90,47 @@ Exiba somente as datas que tenham mais de 3 locações realizadas por dia.
 select dt_locacao, count(cd_cliente) from loc_pedido_locacao
 HAVING count(cd_cliente) > 3
 group by dt_locacao;
+
+/*
+5-	Elabore script que receba um número e identifique se este número é primo. 
+*/
+
+SET Serveroutput ON
+CREATE OR REPLACE
+  FUNCTION TEST_PRIMO(
+      p_n IN NUMBER )
+    RETURN NUMBER
+  AS
+    l_stop NUMBER := ceil(sqrt(p_n));
+  BEGIN
+  
+    IF P_N = 1 THEN
+      RETURN 0;
+      
+    ELSE
+      IF P_N = 2 THEN
+        RETURN 1;
+      END IF;
+    END IF;
+    
+    
+    FOR i IN 2 .. l_stop
+    LOOP
+      IF ( mod(p_n,i) = 0 ) THEN
+      
+        RETURN 0;
+      END IF;
+    END LOOP;
+    RETURN 1;
+    
+  END;
+  
+  
+  
+  BEGIN
+    IF TEST_PRIMO(978) = 1 THEN
+      dbms_output.put_line('É PRIMO');
+    ELSE
+      dbms_output.put_line('NÃO É PRIMO');
+    END IF;
+  END;
