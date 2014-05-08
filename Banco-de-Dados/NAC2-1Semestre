@@ -24,6 +24,8 @@ group by(d.nm_depto);
 end;
 
 
+
+
 DECLARE
   cursor_dados SYS_REFCURSOR;
   qtd_func number;
@@ -36,4 +38,44 @@ BEGIN
        EXIT WHEN cursor_dados%NOTFOUND;
       DBMS_OUTPUT.PUT_LINE(qtd_func || ' ' || nm_depto || ' ' || avg_salario );
     END LOOP;
+END;
+
+
+/*
+3-	Crie um script que armazene num vetor os números de Fibonacci entre dois números 
+inteiros e positivos informados pelo usuário. O vetor deve ser impresso no final do processo.
+*/
+SET Serveroutput ON
+DECLARE
+  TYPE FIBO_TIPO IS varray(100) OF NUMBER;
+  fibo fibo_tipo := fibo_tipo();
+  num1 pls_integer := 0 ;
+  num2 pls_integer := 0 ;
+  user_min pls_integer := &val_min;
+  user_max pls_integer := &val_max;
+  
+  BEGIN
+  num2 := 1;  
+  
+  FOR i IN 1..20 LOOP
+  
+  if num1 > user_min then
+  fibo.EXTEND;
+  fibo(i):= 12;
+  end if;
+  
+  if num1 < user_max then
+  num1 := num1 + num2;
+  num2 := num1 - num2;
+  else 
+   EXIT;
+  END if;
+  
+  END LOOP;
+
+  for i in fibo.first..fibo.last 
+  loop
+  dbms_output.put_line(fibo(i));
+  end loop;
+  
 END;
