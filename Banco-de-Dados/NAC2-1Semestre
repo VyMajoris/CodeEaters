@@ -134,3 +134,30 @@ CREATE OR REPLACE
       dbms_output.put_line('NÃO É PRIMO');
     END IF;
   END;
+
+/*
+6-	Elabore script que receba três números e identifique o maior deles. 
+Caso dois ou três deles sejam idênticos, apresente a mensagem: “Há iguais!”.
+*/
+SET Serveroutput ON
+CREATE OR REPLACE
+PROCEDURE PROC_MAIOR_NUM(
+    N1 IN NUMBER,
+    N2 IN NUMBER,
+    N3 IN NUMBER )
+IS
+BEGIN
+  BEGIN
+    IF( N1 = N2) OR(N1=N3) OR(N2=N3) THEN
+      DBMS_OUTPUT.PUT_LINE( 'HÁ IGUAIS!');
+      RETURN;
+      ELSE
+     DBMS_OUTPUT.PUT_LINE('O MAIOR NUMERO É '  || GREATEST(N1, N2, N3));
+    END IF;
+  END;
+END PROC_MAIOR_NUM ;
+
+
+begin
+	PROC_MAIOR_NUM(2,99,3);  
+end;
