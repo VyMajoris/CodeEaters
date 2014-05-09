@@ -8,7 +8,7 @@ EX5 = FETIO
 EX6 = FEITO
 EX7 = FEITO
 EX8 = FEITO
-EX9 = NÃO FEITO
+EX9 = FEITO
 EX10 = NÃO FEITO
 */
 /*
@@ -224,3 +224,46 @@ CREATE OR REPLACE
     dbms_output.put_line('O salário é ' || g_sal);
   END;
   
+  
+  
+  
+  /*
+9-	Crie um script que armazene numa tabela auxiliar o valor total médio de locação relativos 
+aos modelos de automóveis que foram locados (identificado por seu chassis). 
+*/
+  
+  
+  
+  SET Serveroutput ON
+DECLARE
+  CURSOR c_medVeic
+  IS
+  
+    SELECT v.nr_chassis, ROUND(AVG(i.vl_locacao), 2) medio
+    FROM loc_item_locacao I ,  loc_veiculo v
+    WHERE i.nr_placa = v.nr_placa
+    GROUP BY v.nr_chassis;
+    
+  vMedio C_MedVeic%ROWTYPE;
+  
+TYPE tMedVeic
+IS
+  TABLE OF C_MedVeic%ROWTYPE INDEX BY BINARY_INTEGER;
+  TAB_MedVeic tMedVeic;
+  I NUMBER(10) :=0;
+BEGIN
+  OPEN C_MedVeic;
+  LOOP
+    FETCH C_MedVeic INTO vMedio;
+    EXIT
+  WHEN C_MedVeic%NOTFOUND;
+    I                            := I + 1;
+    TAB_MedVeic(I).nr_chassis := vMedio.nr_chassis;
+    TAB_MedVeic(I).Medio       := vMedio.medio;
+  END LOOP;
+  CLOSE C_MedVeic;
+  FOR J IN TAB_MedVeic.FIRST..TAB_MedVeic.LAST
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('Chassis : ' || TAB_MedVeic(J).nr_chassis || '  ===== Valor médio total: ' || TAB_MedVeic(J).Medio );
+  END LOOP;
+END;
