@@ -197,3 +197,30 @@ END PROC_MOSTRA_IMPAR ;
 begin
 PROC_MOSTRA_IMPAR(10);
 end;
+
+/*
+8-	Elabore uma função que receba como parâmetro o código de um funcionário e devolva como resposta o salário 
+desse funcionário.
+*/
+
+CREATE OR REPLACE
+  FUNCTION MOSTRA_SALARIO(
+      cod_func IN loc_funcionario.cd_func%TYPE)
+    RETURN NUMBER
+  IS
+    v_salario loc_funcionario.vl_salario%TYPE := 0;
+  BEGIN
+    SELECT vl_salario
+    INTO v_salario
+    FROM loc_funcionario
+    WHERE cd_func = cod_func;
+    RETURN v_salario;
+  END MOSTRA_SALARIO;
+
+  DECLARE
+    g_sal NUMBER;
+  BEGIN
+    g_sal := MOSTRA_SALARIO(&Cd_Funcionario);
+    dbms_output.put_line('O salário é ' || g_sal);
+  END;
+  
