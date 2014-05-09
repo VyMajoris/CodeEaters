@@ -285,20 +285,55 @@ IS
 BEGIN
   DECLARE
     W_CD_GRUPO NUMBER := P_cd_grupo;
+    W_NR_PLACA LOC_VEICULO.NR_PLACA%TYPE;
+    W_DS_GRUPO VARCHAR2(40);
+    no_data_found  EXCEPTION;
+    no_data_found2 EXCEPTION;
   BEGIN
-    SELECT NVL(W_CD_GRUPO, 0)
-    INTO W_CD_GRUPO
-    FROM LOC_GRUPO
-    WHERE P_CD_GRUPO = CD_GRUPO;
-    IF w_cd_grupo = 0 THEN
-      dbms_output.put_line('LOLSDOSLDOS');
+    SELECT NVL(G.CD_GRUPO, 0),
+      G.DS_GRUPO
+    INTO W_CD_GRUPO,
+      W_DS_GRUPO
+    FROM LOC_GRUPO G
+    WHERE P_cd_grupo = G.CD_GRUPO;
+    IF w_cd_grupo    = 0 THEN
+      RAISE no_data_found;
+    ELSE
+    
+    
+      SELECT DISTINCT NVL(I.NR_PLACA, '0')
+      INTO W_NR_PLACA
+      FROM LOC_ITEM_LOCACAO I,
+        LOC_VEICULO V
+      WHERE P_cd_grupo = V.CD_GRUPO
+      AND I.NR_PLACA   = V.NR_PLACA
+      and ROWNUM = 1;
+      
+      IF W_NR_PLACA = '0' THEN 
+       
+        RAISE no_data_found2;
+         
       ELSE
-      dbms_output.put_line('AAAAAAAA');
-    END IF;
-  END;
+      dbms_output.put_line('NOME DO GRUPO: ' || W_DS_GRUPO);
+      END IF;
+      
+      
+      
+  END IF;
+END;
 END;
 
 
-begin
-PROC_BUSCA_GRUPO(999);
-end;
+
+
+DECLARE
+  no_data_found2 EXCEPTION;
+  no_data_found  EXCEPTION ;
+BEGIN
+  PROC_BUSCA_GRUPO(8);
+EXCEPTION
+WHEN no_data_found THEN
+  dbms_output.put_line('CODIGO NÃO CADASTRADO');
+WHEN no_data_found2 THEN
+  dbms_output.put_line('GRUPO NÃO POSSUI LOCAÇÕES');
+END;
