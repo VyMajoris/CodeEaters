@@ -9,7 +9,7 @@ EX6 = FEITO
 EX7 = FEITO
 EX8 = FEITO
 EX9 = FEITO
-EX10 = NÃO FEITO
+EX10 = INCOMPLETO
 */
 /*
 1- Desenvolva um script que receba como parâmetro o código do departamento e retorne o nome do departamento,
@@ -267,3 +267,34 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Chassis : ' || TAB_MedVeic(J).nr_chassis || '  ===== Valor médio total: ' || TAB_MedVeic(J).Medio );
   END LOOP;
 END;
+
+
+/*
+10-	Desenvolva um script que receba como parâmetro o código do grupo de veículo e selecione o nome do grupo na 
+tabela LOC_GRUPO, desde que esse grupo de veículos tenha ao menos uma locação realizada. Caso o código do grupo
+não esteja cadastrado, parar o processamento emitindo a seguinte mensagem de erro “Código do grupo não está cadastrado”.
+Já se estiver cadastrado e não possuir locação, indique também esta situação.
+*/
+
+
+
+SET Serveroutput ON
+CREATE OR REPLACE
+PROCEDURE PROC_BUSCA_GRUPO(
+    P_cd_grupo IN cd_grupo.loc_grupo%TYPE)
+IS
+
+    SELECT CD_GRUPO INTO W_CD_GRUPO FROM LOC_GRUPO
+    WHERE P_CD_GRUPO = CD_GRUPO;
+    
+
+BEGIN
+IF w_cd_grupo is null then
+dbms_output.put_line('LOLSDOSLDOS')
+
+
+END;
+
+begin
+PROC_MOSTRA_IMPAR(9999);
+end;
