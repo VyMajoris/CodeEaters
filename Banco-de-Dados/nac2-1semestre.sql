@@ -6,7 +6,7 @@ EX3 = FEITO
 EX4 = FEITO
 EX5 = FETIO
 EX6 = FEITO
-EX7 = NÃO FEITO
+EX7 = FEITO
 EX8 = NÃO FEITO
 EX9 = NÃO FEITO
 EX10 = NÃO FEITO
@@ -169,4 +169,31 @@ END PROC_MAIOR_NUM ;
 
 begin
 PROC_MAIOR_NUM(2,99,3);
+end;
+
+
+/*
+7-	Elabore script que receba dois números e imprima os ímpares existentes entre ambos.
+*/
+
+SET Serveroutput ON
+CREATE OR REPLACE
+PROCEDURE PROC_MOSTRA_IMPAR(
+    N1 IN NUMBER)
+IS
+BEGIN
+DECLARE
+WORK_N1 NUMBER := N1;
+  BEGIN
+    WHILE WORK_N1 != 0 LOOP
+      IF mod(WORK_N1,2) != 0 THEN
+        dbms_output.put_line(WORK_N1 || ' É IMPAR');
+      END IF;
+      WORK_N1 := WORK_N1 - 1;
+    END LOOP;
+  END;
+END PROC_MOSTRA_IMPAR ;
+
+begin
+PROC_MOSTRA_IMPAR(10);
 end;
