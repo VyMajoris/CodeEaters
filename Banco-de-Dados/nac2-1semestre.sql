@@ -279,22 +279,26 @@ Já se estiver cadastrado e não possuir locação, indique também esta situaç
 
 
 SET Serveroutput ON
-CREATE OR REPLACE
-PROCEDURE PROC_BUSCA_GRUPO(
-    P_cd_grupo IN cd_grupo.loc_grupo%TYPE)
+CREATE OR REPLACE PROCEDURE PROC_BUSCA_GRUPO(
+    P_cd_grupo IN loc_grupo.cd_grupo%TYPE)
 IS
-
-    SELECT CD_GRUPO INTO W_CD_GRUPO FROM LOC_GRUPO
-    WHERE P_CD_GRUPO = CD_GRUPO;
-    
-
 BEGIN
-IF w_cd_grupo is null then
-dbms_output.put_line('LOLSDOSLDOS')
-
-
+  DECLARE
+    W_CD_GRUPO NUMBER := P_cd_grupo;
+  BEGIN
+    SELECT NVL(W_CD_GRUPO, 0)
+    INTO W_CD_GRUPO
+    FROM LOC_GRUPO
+    WHERE P_CD_GRUPO = CD_GRUPO;
+    IF w_cd_grupo = 0 THEN
+      dbms_output.put_line('LOLSDOSLDOS');
+      ELSE
+      dbms_output.put_line('AAAAAAAA');
+    END IF;
+  END;
 END;
 
+
 begin
-PROC_MOSTRA_IMPAR(9999);
+PROC_BUSCA_GRUPO(999);
 end;
