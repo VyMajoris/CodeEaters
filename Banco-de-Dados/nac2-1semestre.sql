@@ -12,6 +12,12 @@ EX9 = FEITO
 EX10 = INCOMPLETO
 */
 
+/*
+1-	Desenvolva um script que receba como parâmetro o código do departamento e retorne o nome do departamento, 
+o total de funcionários e o salário médio que paga. Utilize o pacote DBMS_OUTPUT.PUT_LINE para exibir o texto resultante.
+Caso o código do departamento não esteja cadastrado na  tabela, retornar a mensagem  “NÃO EXISTE!”. 
+*/
+
 SET Serveroutput ON
 create or replace function fun_dados_depto( p_cd_depto in number)
 return sys_refcursor as
@@ -22,7 +28,7 @@ begin
 open l_cursor for
   
   select count(d.cd_depto), d.nm_depto, avg(f.vl_salario) from loc_depto d, loc_funcionario f
-where 
+where
 d.cd_depto = p_cd_depto
 and d.cd_depto = f.cd_depto
 group by(d.nm_depto);
@@ -37,32 +43,29 @@ DECLARE
   qtd_func number;
   avg_salario number(10,2);
   nm_depto varchar2(100);
+  contador number := 0;
 BEGIN
 
-cursor_dados :=  fun_dados_depto(10);
-  LOOP
-      FETCH cursor_dados INTO qtd_func, nm_depto, avg_salario;
-       EXIT WHEN cursor_dados%NOTFOUND;
-      DBMS_OUTPUT.PUT_LINE('Código: ' ||qtd_func || ' Nome: ' || nm_depto || ' Salário Médio: ' || avg_salario );
-    END LOOP;
-END;
-
-
-
-DECLARE
-  cursor_dados SYS_REFCURSOR;
-  qtd_func number;
-  avg_salario number(10,2);
-  nm_depto varchar(10);
-BEGIN
+cursor_dados := fun_dados_depto(10);
 
   LOOP
       FETCH cursor_dados INTO qtd_func, nm_depto, avg_salario;
+      contador := contador + 1;
+       IF cursor_dados%NOTFOUND and contador = 1 THEN
+       DBMS_OUTPUT.PUT_LINE('NÃO EXISTE!');
+       
+       EXIT;
+      END IF;
+    
        EXIT WHEN cursor_dados%NOTFOUND;
-      DBMS_OUTPUT.PUT_LINE(qtd_func || ' ' || nm_depto || ' ' || avg_salario );
+      DBMS_OUTPUT.PUT_LINE('Código: ' ||qtd_func || '  Nome Departamento: ' || nm_depto || ' Salário Médio: ' || avg_salario );
+      
+      
+     
+      
+      
     END LOOP;
 END;
-
 
 /*
 2-	Desenvolva um script que tem como objetivo exibir o nome do cliente e o número de estrelas de um cliente cadastrado. 
@@ -109,13 +112,6 @@ BEGIN
 -- 9999 = não cadastrado
 proc_cliente_estrelas(9999);
 END;
-
-
-
-
-
-
-
 
 
 
