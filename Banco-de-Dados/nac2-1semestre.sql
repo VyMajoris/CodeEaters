@@ -346,63 +346,50 @@ Já se estiver cadastrado e não possuir locação, indique também esta situaç
 */
 
 
-
 SET Serveroutput ON
-CREATE OR REPLACE PROCEDURE PROC_BUSCA_GRUPO(
-    P_cd_grupo IN loc_grupo.cd_grupo%TYPE)
+CREATE OR REPLACE
+PROCEDURE proc_busca_grupo(
+    p_cd_grupo IN NUMBER)
+    
 IS
+
 BEGIN
-  DECLARE
-    W_CD_GRUPO NUMBER := P_cd_grupo;
-    W_NR_PLACA LOC_VEICULO.NR_PLACA%TYPE;
-    W_DS_GRUPO VARCHAR2(40);
-    no_data_found  EXCEPTION;
-    no_data_found2 EXCEPTION;
-  BEGIN
-    SELECT NVL(G.CD_GRUPO, 0),
-      G.DS_GRUPO
-    INTO W_CD_GRUPO,
-      W_DS_GRUPO
-    FROM LOC_GRUPO G
-    WHERE P_cd_grupo = G.CD_GRUPO;
-    IF w_cd_grupo    = 0 THEN
-      RAISE no_data_found;
-    ELSE
-    
-    
-      SELECT DISTINCT NVL(I.NR_PLACA, '0')
-      INTO W_NR_PLACA
-      FROM LOC_ITEM_LOCACAO I,
-        LOC_VEICULO V
-      WHERE P_cd_grupo = V.CD_GRUPO
-      AND I.NR_PLACA   = V.NR_PLACA
-      and ROWNUM = 1;
-      
-      IF W_NR_PLACA = '0' THEN 
-       
-        RAISE no_data_found2;
-         
-      ELSE
-      dbms_output.put_line('NOME DO GRUPO: ' || W_DS_GRUPO);
-      END IF;
-      
-      
-      
-  END IF;
-END;
-END;
-
-
-
-
 DECLARE
-  no_data_found2 EXCEPTION;
-  no_data_found  EXCEPTION ;
+P_DS_GRUPO LOC_GRUPO.DS_GRUPO%TYPE;
+P_NR_PLACA LOC_ITEM_LOCACAO.NR_PLACA%TYPE;
+P_W_CD_GRUPO LOC_GRUPO.CD_GRUPO%TYPE;
 BEGIN
-  PROC_BUSCA_GRUPO(8);
+
+SELECT DISTINCT G.CD_GRUPO INTO P_W_CD_GRUPO FROM LOC_GRUPO G 
+WHERE P_CD_GRUPO = G.CD_GRUPO
+and rownum = 1;
+
+  SELECT DISTINCT G.DS_GRUPO, I.NR_PLACA into P_DS_GRUPO, P_NR_PLACA FROM LOC_GRUPO G, LOC_VEICULO V, LOC_ITEM_LOCACAO I
+  WHERE P_CD_GRUPO = G.CD_GRUPO
+  AND V.CD_GRUPO = G.CD_GRUPO
+  AND V.NR_PLACA = I.NR_PLACA
+  and rownum = 1;
+  
+  DBMS_OUTPUT.PUT_LINE('Nome do grupo : ' || P_DS_GRUPO );
+  
 EXCEPTION
-WHEN no_data_found THEN
-  dbms_output.put_line('CODIGO NÃO CADASTRADO');
-WHEN no_data_found2 THEN
-  dbms_output.put_line('GRUPO NÃO POSSUI LOCAÇÕES');
+  WHEN NO_DATA_FOUND THEN
+  IF P_W_CD_GRUPO IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('O GRUPO DE CÓDIGO  ' ||p_cd_grupo|| ' NÃO ESTÁ CADASTRADO!');
+    
+    else if P_NR_PLACA IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('ESSE GRUPO NÃO POSSUI LOCAÇÕES!');
+    END IF;
+
+  END IF;
+  RETURN;
+RAISE;
 END;
+END;
+
+BEGIN
+-- 8 sem locações
+-- 10 não existe
+proc_busca_grupo(10);
+END;
+
