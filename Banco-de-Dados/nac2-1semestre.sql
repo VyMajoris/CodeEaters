@@ -11,7 +11,7 @@ EX8 = FEITO
 EX9 = FEITO
 EX10 = INCOMPLETO
 */
-/*
+
 SET Serveroutput ON
 create or replace function fun_dados_depto( p_cd_depto in number)
 return sys_refcursor as
