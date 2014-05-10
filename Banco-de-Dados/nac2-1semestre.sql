@@ -65,6 +65,65 @@ END;
 
 
 /*
+2-	Desenvolva um script que tem como objetivo exibir o nome do cliente e o número de estrelas de um cliente cadastrado. 
+Esse script deve ter como parâmetro de chamada o código do cliente e a partir desse código, deve-se pesquisar se o cliente 
+está cadastrado. Em caso positivo, exiba seu nome. Em caso negativo, exiba a seguinte mensagem de erro : 
+O cliente de código <999> não está cadastrado!
+*/
+
+SET Serveroutput ON
+CREATE OR REPLACE
+PROCEDURE proc_cliente_estrelas(
+    p_cd_cli IN NUMBER)
+    
+IS
+
+BEGIN
+DECLARE
+P_NM_CLIENTE  LOC_CLIENTE.NM_CLIENTE%TYPE;
+P_NR_ESTRELAS  LOC_CLIENTE.nr_estrelas%TYPE;
+BEGIN
+
+
+  SELECT nm_cliente, nr_estrelas into P_NM_CLIENTE, P_NR_ESTRELAS FROM loc_cliente
+  WHERE p_cd_cli  = cd_cliente
+  AND cd_cliente IS NOT NULL;
+  
+  DBMS_OUTPUT.PUT_LINE('Cliente:  ' || P_NM_CLIENTE || ' --------- Qtde. Estrelas:  ' || P_NR_ESTRELAS);
+  
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  DBMS_OUTPUT.PUT_LINE('O cliente de código ' ||p_cd_cli|| ' não está cadastrado!');
+  RETURN; 
+RAISE;
+  
+  
+END;
+END;
+
+
+
+
+BEGIN
+--999 = cadastrado
+-- 9999 = não cadastrado
+proc_cliente_estrelas(9999);
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 3- Crie um script que armazene num vetor os números de Fibonacci entre dois números
 inteiros e positivos informados pelo usuário. O vetor deve ser impresso no final do processo.
 */
