@@ -9,7 +9,7 @@ EX6 = FEITO
 EX7 = FEITO
 EX8 = FEITO
 EX9 = FEITO
-EX10 = INCOMPLETO
+EX10 = FEITO
 */
 
 /*
@@ -36,8 +36,6 @@ group by(d.nm_depto);
 return l_cursor;
 end;
 
-
-
 DECLARE
   cursor_dados sys_refcursor;
   qtd_func number;
@@ -59,10 +57,6 @@ cursor_dados := fun_dados_depto(10);
     
        EXIT WHEN cursor_dados%NOTFOUND;
       DBMS_OUTPUT.PUT_LINE('Código: ' ||qtd_func || '  Nome Departamento: ' || nm_depto || ' Salário Médio: ' || avg_salario );
-      
-      
-     
-      
       
     END LOOP;
 END;
@@ -87,7 +81,6 @@ P_NM_CLIENTE  LOC_CLIENTE.NM_CLIENTE%TYPE;
 P_NR_ESTRELAS  LOC_CLIENTE.nr_estrelas%TYPE;
 BEGIN
 
-
   SELECT nm_cliente, nr_estrelas into P_NM_CLIENTE, P_NR_ESTRELAS FROM loc_cliente
   WHERE p_cd_cli  = cd_cliente
   AND cd_cliente IS NOT NULL;
@@ -100,11 +93,8 @@ EXCEPTION
   RETURN; 
 RAISE;
   
-  
 END;
 END;
-
-
 
 
 BEGIN
@@ -112,11 +102,6 @@ BEGIN
 -- 9999 = não cadastrado
 proc_cliente_estrelas(9999);
 END;
-
-
-
-
-
 
 
 /*
@@ -158,8 +143,6 @@ DECLARE
   
 END;
 
-
-
 /*
 4- Desenvolva uma instrução SQL que exiba a quantidade total de locações realizadas por data do pedido.
 Exiba somente as datas que tenham mais de 3 locações realizadas por dia.
@@ -191,19 +174,15 @@ CREATE OR REPLACE
       END IF;
     END IF;
     
-    
     FOR i IN 2 .. l_stop
     LOOP
       IF ( mod(p_n,i) = 0 ) THEN
-      
         RETURN 0;
       END IF;
     END LOOP;
     RETURN 1;
     
   END;
-  
-  
   
   BEGIN
     IF TEST_PRIMO(978) = 1 THEN
@@ -294,14 +273,11 @@ CREATE OR REPLACE
   END;
   
   
-  
-  
+
   /*
 9-	Crie um script que armazene numa tabela auxiliar o valor total médio de locação relativos 
 aos modelos de automóveis que foram locados (identificado por seu chassis). 
 */
-  
-  
   
   SET Serveroutput ON
 DECLARE
