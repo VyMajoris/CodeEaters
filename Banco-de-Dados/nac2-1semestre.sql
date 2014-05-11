@@ -108,40 +108,38 @@ END;
 3- Crie um script que armazene num vetor os números de Fibonacci entre dois números
 inteiros e positivos informados pelo usuário. O vetor deve ser impresso no final do processo.
 */
-SET Serveroutput ON
+ET Serveroutput ON
 DECLARE
-  TYPE FIBO_TIPO IS varray(100) OF NUMBER;
-  fibo fibo_tipo := fibo_tipo();
-  num1 pls_integer := 0 ;
-  num2 pls_integer := 0 ;
-  user_min pls_integer := &val_min;
-  user_max pls_integer := &val_max;
-  
-  BEGIN
+TYPE arrayType IS varray(999) OF NUMBER;
+l_data arrayType     := arrayType();
+num1 pls_integer     := 0 ;
+num2 pls_integer     := 0 ;
+user_min pls_integer := &val_min;
+user_max pls_integer := &val_max;
+BEGIN
+  --EXTEND AQUI FUNCIONA
+  l_data.extend(20);
   num2 := 1;
-  
-  FOR i IN 1..20 LOOP
-  
-  if num1 > user_min then
-  fibo.EXTEND;
-  fibo(i):= 12;
-  end if;
-  
-  if num1 < user_max then
-  num1 := num1 + num2;
-  num2 := num1 - num2;
-  else
-   EXIT;
-  END if;
-  
+  FOR i IN 1..20
+  LOOP
+    IF num1 > user_min THEN
+      --EXTEND AQUI NÃO FUNCIONA
+      l_data.extend;
+      l_data(i) := num1;
+    END IF;
+    IF num1 < user_max THEN
+      num1 := num1 + num2;
+      num2 := num1 - num2;
+    ELSE
+      EXIT;
+    END IF;
   END LOOP;
-
-  for i in fibo.first..fibo.last
-  loop
-  dbms_output.put_line(fibo(i));
-  end loop;
-  
+  FOR i IN l_data.FIRST..l_data.LAST
+  LOOP
+    dbms_output.put_line(l_data(i));
+  END LOOP;
 END;
+
 
 /*
 4- Desenvolva uma instrução SQL que exiba a quantidade total de locações realizadas por data do pedido.
