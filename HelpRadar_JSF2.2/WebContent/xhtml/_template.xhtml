@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description"
+		content="A layout example that shows off a responsive product landing page." />
+	<title><ui:insert name="title">Default titleaa</ui:insert></title>
+	<h:outputScript library="js" name="jquery-2.1.1.min.js"/>
+
+
+
+
+<script type="text/javascript"
+		src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		
+	<script type="text/javascript">
+    (function () {
+      var po = document.createElement('script');
+      po.type = 'text/javascript';
+      po.async = true;
+      po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+
+	<link rel="stylesheet"
+		href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />
+	<h:outputStylesheet name="layouts/pure-min.css" library="css" />
+	<h:outputStylesheet name="layouts/working.css" library="css" />
+	<h:outputStylesheet name="layouts/gmaps.css" library="css" />
+	<link rel="stylesheet"
+		href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+
+
+
+
+	<script type="application/x-javascript">
+		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	</script>
+
+
+
+
+</h:head>
+
+<h:body>
+
+
+
+
+	<div id="content">
+		<ui:insert name="content">
+    	Content area.  See comments below this line in the source.
+    	<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+			<!-- <div> -->
+			<!-- <ui:include src="content.xhtml"/> -->
+			<!-- </div> -->
+		</ui:insert>
+	</div>
+
+
+
+
+</h:body>
+
+</html>
+

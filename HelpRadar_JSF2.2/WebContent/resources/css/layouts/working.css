@@ -1,0 +1,15 @@
+.logo{
+	margin: 0px !important; 
+}
+.working-fix-top-margin{
+	margin-top: 0px !important;
+}
+.working-fix-color{
+	color: #D6771F;
+}
+.working-fix-image{
+	background-image: url("#{resource['img/common/map2.jpg']}" ) !important"; 
+	
+
+}
+
