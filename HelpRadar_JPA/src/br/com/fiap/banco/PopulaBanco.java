@@ -24,6 +24,9 @@ import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.Tags;
 import br.com.helpradar.entity.Usuario;
 
+
+
+//TESTE GITHUB
 public class PopulaBanco {
 
 	public static void main(String[] args) {
