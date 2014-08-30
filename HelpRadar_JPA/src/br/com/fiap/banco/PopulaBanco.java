@@ -26,7 +26,7 @@ import br.com.helpradar.entity.Usuario;
 
 
 
-//TESTE GITHUB
+//OUTRA ALTERAÇÃO NESSA FITA
 public class PopulaBanco {
 
 	public static void main(String[] args) {
