@@ -31,8 +31,18 @@ public class Identificacao {
 	@Lob
 	private byte[] foto;
 	
-	public int getId() {
-		return id;
+	//peças de roupas
+	//será guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
+	private List<String> pecas;
+
+
+	public Identificacao(int id, Assistente assitente, byte[] foto,
+			List<String> pecas) {
+		super();
+		this.id = id;
+		this.assitente = assitente;
+		this.foto = foto;
+		this.pecas = pecas;
 	}
 
 	public void setId(int id) {
@@ -47,10 +57,6 @@ public class Identificacao {
 		this.foto = foto;
 	}
 
-	//peças de roupas
-	//será guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
-	private List<String> pecas;
-
 	public List<String> getPecas() {
 		return pecas;
 	}
@@ -61,6 +67,10 @@ public class Identificacao {
 
 	public Assistente getAssitente() {
 		return assitente;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setAssitente(Assistente assitente) {

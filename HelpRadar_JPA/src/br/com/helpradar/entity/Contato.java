@@ -36,7 +36,19 @@ public class Contato {
 	private List<String> social;
 	
 	//Será mostrado um link para a página do google+/facebook, caso o assistente deseje. Por isso, só é necessário um boolean
-	private boolean mostrarPerfil;
+	private boolean mostraPerfil;
+
+
+	public Contato(int id, Usuario usuario, List<String> emailPublicos,
+			List<String> telefones, List<String> social, boolean mostraPerfil) {
+		super();
+		this.id = id;
+		this.usuario = usuario;
+		this.emailPublicos = emailPublicos;
+		this.telefones = telefones;
+		this.social = social;
+		this.mostraPerfil = mostraPerfil;
+	}
 
 	public List<String> getEmailPublicos() {
 		return emailPublicos;
@@ -46,12 +58,12 @@ public class Contato {
 		this.emailPublicos = emailPublicos;
 	}
 
-	public boolean isMostrarPerfil() {
-		return mostrarPerfil;
+	public boolean isMostraPerfil() {
+		return mostraPerfil;
 	}
 
-	public void setMostrarPerfil(boolean mostrarPerfil) {
-		this.mostrarPerfil = mostrarPerfil;
+	public void setMostraPerfil(boolean mostrarPerfil) {
+		this.mostraPerfil = mostrarPerfil;
 	}
 
 	public List<String> getSocial() {
@@ -77,16 +89,7 @@ public class Contato {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Contato(int id, Usuario usuario, List<String> emailPublicos,
-			List<String> telefones, List<String> social, boolean mostrarPerfil) {
-		super();
-		this.id = id;
-		this.usuario = usuario;
-		this.emailPublicos = emailPublicos;
-		this.telefones = telefones;
-		this.social = social;
-		this.mostrarPerfil = mostrarPerfil;
-	}
+
 
 	public int getId() {
 		return id;

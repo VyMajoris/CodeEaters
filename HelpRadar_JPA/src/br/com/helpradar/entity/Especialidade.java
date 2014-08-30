@@ -14,70 +14,35 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@SequenceGenerator(name="seqReserva", sequenceName="SEQ_RESERVA", allocationSize=1)
+@SequenceGenerator(name="seqEspecialidade", sequenceName="SEQ_ESPECIALIDADE", allocationSize=1)
 public class Especialidade {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqReserva")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqEspecialidade")
 	private int id;
 	
-	@Column(name="NUMERO_DIAS")
-	private int numeroDias;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="DT_RESERVA")
-	private Calendar dataReserva;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	private Avaliacao pacote;
-	
-	@ManyToOne
-	private Identificacao cliente;
-	
-	public Especialidade(int numeroDias, Calendar dataReserva, Avaliacao pacote, Identificacao cliente) {
+	private String nomeEspecialidade;
+
+	public String getNomeEspecialidade() {
+		return nomeEspecialidade;
+	}
+
+	public Especialidade(int id, String nomeEspecialidade) {
 		super();
-		this.numeroDias = numeroDias;
-		this.dataReserva = dataReserva;
-		this.pacote = pacote;
-		this.cliente = cliente;
+		this.id = id;
+		this.nomeEspecialidade = nomeEspecialidade;
 	}
 
-	public Especialidade() {
-	}
-
-	public int getNumeroDias() {
-		return numeroDias;
-	}
-
-	public void setNumeroDias(int numeroDias) {
-		this.numeroDias = numeroDias;
-	}
-
-	public Calendar getDataReserva() {
-		return dataReserva;
-	}
-
-	public void setDataReserva(Calendar dataReserva) {
-		this.dataReserva = dataReserva;
+	public void setNomeEspecialidade(String nomeEspecialidade) {
+		this.nomeEspecialidade = nomeEspecialidade;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public Avaliacao getPacote() {
-		return pacote;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	public void setPacote(Avaliacao pacote) {
-		this.pacote = pacote;
-	}
-
-	public Identificacao getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Identificacao cliente) {
-		this.cliente = cliente;
-	}
+	
 }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 
@@ -14,6 +15,17 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator(name="seqUsuario", sequenceName="SEQ_USUARIO", allocationSize=1)
 public class Usuario {
+
+	public Usuario(int id, String nome, byte[] foto, boolean social,
+			List<Usuario> listaAmigos, Contato contato) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.foto = foto;
+		this.social = social;
+		this.listaAmigos = listaAmigos;
+		this.contato = contato;
+	}
 
 	//O ID será provido pelo API de login
 	@Id
@@ -32,14 +44,18 @@ public class Usuario {
 	@Column(nullable=false)
 	private boolean social;
 
-	public Usuario(int id, String nome, byte[] foto, boolean social,
-			List<Usuario> listaAmigos) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.foto = foto;
-		this.social = social;
-		this.listaAmigos = listaAmigos;
+	@OneToMany
+	private List<Usuario> listaAmigos;
+
+	@OneToOne
+	private Contato contato;
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 
 	public byte[] getFoto() {
@@ -54,16 +70,6 @@ public class Usuario {
 		this.id = id;
 	}
 
-	@OneToMany
-	private List<Usuario> listaAmigos;
-
-
-
-
-
-	public Usuario() {
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -76,8 +82,6 @@ public class Usuario {
 	public int getId() {
 		return id;
 	}
-
-
 
 	public boolean isSocial() {
 		return social;
