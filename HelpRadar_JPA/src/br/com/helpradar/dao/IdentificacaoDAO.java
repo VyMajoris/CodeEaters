@@ -8,8 +8,6 @@ import br.com.helpradar.entity.Identificacao;
 public interface IdentificacaoDAO extends DAO<Identificacao,Integer>{
 
 	List<Identificacao> buscarTodos();
-	
-	List<Identificacao> buscarPorDescricao(String descricao);
-	
-	List<Identificacao> buscarPorPeriodo(Calendar inicio, Calendar fim);
+
+
 }

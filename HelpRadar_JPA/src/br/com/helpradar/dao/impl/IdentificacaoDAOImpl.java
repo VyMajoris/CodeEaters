@@ -16,20 +16,6 @@ public class IdentificacaoDAOImpl extends DAOImpl<Identificacao,Integer> impleme
 		super(entityManager);
 	}
 
-	
-
-	@Override
-	public List<Identificacao> buscarPorDescricao(String descricao) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Identificacao> buscarPorPeriodo(Calendar inicio, Calendar fim) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 
 	@Override

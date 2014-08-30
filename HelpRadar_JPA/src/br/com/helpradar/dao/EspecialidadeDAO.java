@@ -6,7 +6,7 @@ import br.com.helpradar.entity.Especialidade;
 
 public interface EspecialidadeDAO extends DAO<Especialidade,Integer>{
 
-	List<Especialidade> buscaPorNomeCliente(String nome);
+	List<Especialidade> buscaPorNome(String nome);
 	
 	List<Especialidade> buscarTodos();
 }

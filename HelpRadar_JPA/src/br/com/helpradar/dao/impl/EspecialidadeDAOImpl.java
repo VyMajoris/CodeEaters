@@ -16,15 +16,15 @@ public class EspecialidadeDAOImpl extends DAOImpl<Especialidade,Integer> impleme
 	}
 
 	@Override
-	public List<Especialidade> buscaPorNomeCliente(String nome) {
-		TypedQuery<Especialidade> query = em.createQuery("from Reserva r where r.cliente.nome like :nome",Especialidade.class);
+	public List<Especialidade> buscaPorNome(String nome) {
+		TypedQuery<Especialidade> query = em.createQuery("from Especialidade e where e.nomeEspecialidade like :nome",Especialidade.class);
 		query.setParameter("nome", "%"+nome+"%");
 		return query.getResultList();
 	}
 
 	@Override
 	public List<Especialidade> buscarTodos() {
-		TypedQuery<Especialidade> query = em.createQuery("from Reserva",Especialidade.class);
+		TypedQuery<Especialidade> query = em.createQuery("from Especialidade",Especialidade.class);
 		return query.getResultList();
 	}
 
