@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.helpradar.dao.ClienteDAO;
+
 import br.com.helpradar.dao.IdentificacaoDAO;
 import br.com.helpradar.entity.Identificacao;
 

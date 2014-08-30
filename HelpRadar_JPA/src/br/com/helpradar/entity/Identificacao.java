@@ -17,98 +17,22 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@SequenceGenerator(name="seqCliente", sequenceName="SEQ_CLIENTE", allocationSize=1)
+@SequenceGenerator(name="seqIdentificacao", sequenceName="SEQ_IDENTIFICACAO", allocationSize=1)
 public class Identificacao {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqCliente")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqIdentificacao")
 	private int id;
 	
-	@Column(nullable=false)
-	private String nome;
+	@OneToOne
+	private Assistente assitente;
 	
-	@Column(length=14,nullable=false)
-	private String cpf;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name="DT_NASCIMENTO")
-	private Calendar dataNascimento = Calendar.getInstance();
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	private Assistente endereco;
-	
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	private List<Avaliacao> pacotes;
-	
-	//Propriedade para armazenar informações grandes
-	//Lob -> Mapeia uma coluna do tipo BLOB no banco de dados.
 	@Lob
 	private byte[] foto;
 	
-	@Column(name="DS_CATEGORIA")
-	private Integer categoria;
-
-	public Integer getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Integer categoria) {
-		this.categoria = categoria;
-	}
-
-	public Identificacao(String nome, String cpf, Calendar dataNascimento, Assistente endereco, List<Avaliacao> pacotes) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
-		this.endereco = endereco;
-		this.pacotes = pacotes;
-	}
-	
-	public Identificacao() {
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public Calendar getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Calendar dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
 	public int getId() {
 		return id;
-	}
-
-	public Assistente getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Assistente endereco) {
-		this.endereco = endereco;
-	}
-
-	public List<Avaliacao> getPacotes() {
-		return pacotes;
-	}
-
-	public void setPacotes(List<Avaliacao> pacotes) {
-		this.pacotes = pacotes;
 	}
 
 	public void setId(int id) {
@@ -122,5 +46,27 @@ public class Identificacao {
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
+
+	//peças de roupas
+	//será guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
+	private List<String> pecas;
+
+	public List<String> getPecas() {
+		return pecas;
+	}
+
+	public void setPecas(List<String> pecas) {
+		this.pecas = pecas;
+	}
+
+	public Assistente getAssitente() {
+		return assitente;
+	}
+
+	public void setAssitente(Assistente assitente) {
+		this.assitente = assitente;
+	}
+	
+	
 	
 }

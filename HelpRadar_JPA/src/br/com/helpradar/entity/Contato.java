@@ -1,76 +1,107 @@
 package br.com.helpradar.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name="seqCidade", sequenceName="SEQ_CIDADE", allocationSize=1)
+@SequenceGenerator(name="seqContato", sequenceName="SEQ_CONTATO", allocationSize=1)
 public class Contato {
 
+
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqCidade")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqContato")
 	private int id;
 	
-	@Column(nullable=false)
-	private String nome;
 	
-	@Column(length=2,nullable=false)
-	private String uf;
 	
-	private int ddd;
-	
-	@Column(name="NR_HABITANTES")
-	private int nrHabitantes;
 
-	public Contato(String nome, String uf, int ddd, int nrHabitantes) {
+	@OneToOne
+	private Usuario usuario;
+	
+	//O Email no contato pode ser outro email além do email de cadastro
+	private List<String> emailPublicos;
+	
+	//String para se adaptar facilmente com os diversos formatos de telefones pelo mundo
+	private List<String> telefones;
+	
+	//Uma lista de links de profiles de redes sociais extras, como LinkedIn
+	private List<String> social;
+	
+	//Será mostrado um link para a página do google+/facebook, caso o assistente deseje. Por isso, só é necessário um boolean
+	private boolean mostrarPerfil;
+
+	public List<String> getEmailPublicos() {
+		return emailPublicos;
+	}
+
+	public void setEmailPublicos(List<String> emailPublicos) {
+		this.emailPublicos = emailPublicos;
+	}
+
+	public boolean isMostrarPerfil() {
+		return mostrarPerfil;
+	}
+
+	public void setMostrarPerfil(boolean mostrarPerfil) {
+		this.mostrarPerfil = mostrarPerfil;
+	}
+
+	public List<String> getSocial() {
+		return social;
+	}
+
+	public void setSocial(List<String> social) {
+		this.social = social;
+	}
+
+	public List<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Contato(int id, Usuario usuario, List<String> emailPublicos,
+			List<String> telefones, List<String> social, boolean mostrarPerfil) {
 		super();
-		this.nome = nome;
-		this.uf = uf;
-		this.ddd = ddd;
-		this.nrHabitantes = nrHabitantes;
-	}
-
-	public Contato() {
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	public int getDdd() {
-		return ddd;
-	}
-
-	public void setDdd(int ddd) {
-		this.ddd = ddd;
-	}
-
-	public int getNrHabitantes() {
-		return nrHabitantes;
-	}
-
-	public void setNrHabitantes(int nrHabitantes) {
-		this.nrHabitantes = nrHabitantes;
+		this.id = id;
+		this.usuario = usuario;
+		this.emailPublicos = emailPublicos;
+		this.telefones = telefones;
+		this.social = social;
+		this.mostrarPerfil = mostrarPerfil;
 	}
 
 	public int getId() {
 		return id;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
+	
+	
+
+
+	
+	
 
 }

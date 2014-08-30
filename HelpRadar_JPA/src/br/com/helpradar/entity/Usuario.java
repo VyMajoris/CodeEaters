@@ -1,38 +1,65 @@
 package br.com.helpradar.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+
+
 @Entity
-@SequenceGenerator(name="seqCidade", sequenceName="SEQ_CIDADE", allocationSize=1)
+@SequenceGenerator(name="seqUsuario", sequenceName="SEQ_USUARIO", allocationSize=1)
 public class Usuario {
 
+	//O ID será provido pelo API de login
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqCidade")
 	private int id;
-	
+
+	//Nome será provida pela API de login, mas poderá ser mudado
 	@Column(nullable=false)
 	private String nome;
-	
-	@Column(length=2,nullable=false)
-	private String uf;
-	
-	private int ddd;
-	
-	@Column(name="NR_HABITANTES")
-	private int nrHabitantes;
 
-	public Usuario(String nome, String uf, int ddd, int nrHabitantes) {
+	//Foto será provida pela API de login, mas poderá ser mudado
+	@Lob
+	private byte[] foto;
+
+	//TRUE = GOOGLE+
+	//FALSE = FACEBOOK
+	@Column(nullable=false)
+	private boolean social;
+
+	public Usuario(int id, String nome, byte[] foto, boolean social,
+			List<Usuario> listaAmigos) {
 		super();
+		this.id = id;
 		this.nome = nome;
-		this.uf = uf;
-		this.ddd = ddd;
-		this.nrHabitantes = nrHabitantes;
+		this.foto = foto;
+		this.social = social;
+		this.listaAmigos = listaAmigos;
 	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@OneToMany
+	private List<Usuario> listaAmigos;
+
+
+
+
 
 	public Usuario() {
 	}
@@ -45,32 +72,29 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	public int getDdd() {
-		return ddd;
-	}
-
-	public void setDdd(int ddd) {
-		this.ddd = ddd;
-	}
-
-	public int getNrHabitantes() {
-		return nrHabitantes;
-	}
-
-	public void setNrHabitantes(int nrHabitantes) {
-		this.nrHabitantes = nrHabitantes;
-	}
 
 	public int getId() {
 		return id;
 	}
+
+
+
+	public boolean isSocial() {
+		return social;
+	}
+
+	public void setSocial(boolean social) {
+		this.social = social;
+	}
+
+	public List<Usuario> getListaAmigos() {
+		return listaAmigos;
+	}
+
+	public void setListaAmigos(List<Usuario> listaAmigos) {
+		this.listaAmigos = listaAmigos;
+	}
+
+
 
 }
