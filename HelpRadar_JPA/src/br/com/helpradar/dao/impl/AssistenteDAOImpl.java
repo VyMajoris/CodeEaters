@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 import br.com.helpradar.dao.AssistenteDAO;
 import br.com.helpradar.entity.Assistente;
 import br.com.helpradar.entity.Avaliacao;
-import br.com.helpradar.entity.Especialidade;
 
 public class AssistenteDAOImpl extends DAOImpl<Assistente,Integer> implements AssistenteDAO{
 
@@ -25,6 +24,14 @@ public class AssistenteDAOImpl extends DAOImpl<Assistente,Integer> implements As
 		query.setParameter("AssistID", "%"+assistente.getId()+"%");
 		return query.getResultList();
 		
+	}
+
+	@Override
+	public List<Assistente> BuscarAssistentePorEspecialidade(
+			String especialidadeNome) {
+		TypedQuery<Assistente> query = em.createQuery("Select Assistente from especialidade where especialidade.nomeEspecialidade like ':nomeEspecialidade%'",Assistente.class);
+		query.setParameter("nomeEspecialidade", "%"+especialidadeNome+"%");
+		return query.getResultList();
 	}
 
 }
