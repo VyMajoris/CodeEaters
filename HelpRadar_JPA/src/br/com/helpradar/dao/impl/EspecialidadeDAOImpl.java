@@ -17,7 +17,7 @@ public class EspecialidadeDAOImpl extends DAOImpl<Especialidade,Integer> impleme
 
 	@Override
 	public List<Especialidade> buscaPorNome(String nome) {
-		TypedQuery<Especialidade> query = em.createQuery("from Especialidade e where e.nomeEspecialidade like :nome",Especialidade.class);
+		TypedQuery<Especialidade> query = em.createQuery("from Especialidade e where e.nomeEspecialidade like '%:nome'",Especialidade.class);
 		query.setParameter("nome", "%"+nome+"%");
 		return query.getResultList();
 	}

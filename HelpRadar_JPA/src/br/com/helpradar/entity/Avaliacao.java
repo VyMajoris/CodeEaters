@@ -25,8 +25,6 @@ public class Avaliacao {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqAvaliacao")
 	private int id;
 	
-	@OneToMany
-	private List<Tags> tags;
 
 	private String descricao;
 
@@ -41,11 +39,11 @@ public class Avaliacao {
 
 
 
-	public Avaliacao(int id, List<Tags> tags,
+	public Avaliacao(int id,
 			String descricao, Date dataAvaliacao, String titulo, Integer nota) {
 		super();
 		this.id = id;
-		this.tags = tags;
+	
 		this.descricao = descricao;
 		this.dataAvaliacao = dataAvaliacao;
 		this.titulo = titulo;
@@ -62,15 +60,6 @@ public class Avaliacao {
 		this.id = id;
 	}
 
-
-	public List<Tags> getTags() {
-		return tags;
-	}
-
-
-	public void setTags(List<Tags> tags) {
-		this.tags = tags;
-	}
 
 
 	public String getTitulo() {

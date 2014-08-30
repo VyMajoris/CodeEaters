@@ -18,11 +18,7 @@ public class IdentificacaoDAOImpl extends DAOImpl<Identificacao,Integer> impleme
 
 
 
-	@Override
-	public List<Identificacao> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
 

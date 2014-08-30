@@ -12,6 +12,7 @@ import br.com.helpradar.dao.AssistenteDAO;
 import br.com.helpradar.entity.Assistente;
 import br.com.helpradar.entity.Avaliacao;
 import br.com.helpradar.entity.Especialidade;
+import br.com.helpradar.entity.Identificacao;
 
 public class AssistenteDAOImpl extends DAOImpl<Assistente,Integer> implements AssistenteDAO{
 
@@ -26,8 +27,8 @@ public class AssistenteDAOImpl extends DAOImpl<Assistente,Integer> implements As
 		return query.getResultList();
 	}
 	@Override
-	public List<Avaliacao> buscarIdentificacaoPorAssistente(Assistente assistente) {
-		TypedQuery<Avaliacao> query = em.createQuery("Select avaliacao from Assistente where assistente.id = :AssistID",Avaliacao.class);
+	public List<Identificacao> buscarIdentificacaoPorAssistente(Assistente assistente) {
+		TypedQuery<Identificacao> query = em.createQuery("Select assistente.identificacao from Assistente where assistente.id = :AssistID",Identificacao.class);
 		query.setParameter("AssistID", "%"+assistente.getId()+"%");
 		return query.getResultList();
 	}

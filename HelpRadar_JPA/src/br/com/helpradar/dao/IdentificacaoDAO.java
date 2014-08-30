@@ -7,7 +7,6 @@ import br.com.helpradar.entity.Identificacao;
 
 public interface IdentificacaoDAO extends DAO<Identificacao,Integer>{
 
-	List<Identificacao> buscarTodos();
-
+	
 
 }
