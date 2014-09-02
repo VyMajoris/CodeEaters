@@ -25,22 +25,22 @@ public class Identificacao {
 	private int id;
 	
 	@OneToOne
-	private Assistente assitente;
+	private Assistente assistente;
 	
 	
 	@Lob
 	private byte[] foto;
 	
-	//peças de roupas
-	//será guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
+	//peÃ§as de roupas
+	//serÃ¡ guardada no banco todas as peÃ§a para mostrar por meio de auto-complete para o assisente re-inserir
 	private List<String> pecas;
 
 
-	public Identificacao(int id, Assistente assitente, byte[] foto,
+	public Identificacao(int id, Assistente assistente, byte[] foto,
 			List<String> pecas) {
 		super();
 		this.id = id;
-		this.assitente = assitente;
+		this.assistente = assistente;
 		this.foto = foto;
 		this.pecas = pecas;
 	}
@@ -65,16 +65,16 @@ public class Identificacao {
 		this.pecas = pecas;
 	}
 
-	public Assistente getAssitente() {
-		return assitente;
+	public Assistente getAssistente() {
+		return assistente;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setAssitente(Assistente assitente) {
-		this.assitente = assitente;
+	public void setAssistente(Assistente assistente) {
+		this.assistente = assistente;
 	}
 	
 	
