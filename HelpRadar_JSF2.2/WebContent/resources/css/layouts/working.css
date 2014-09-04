@@ -8,7 +8,7 @@
 	color: #D6771F;
 }
 .working-fix-image{
-	background-image: url("#{resource['img/common/map2.jpg']}" ) !important"; 
+	background-image: url("#{resource['img/common/map2.jpg']}" ) !important; 
 	
 
 }

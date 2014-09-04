@@ -30,8 +30,7 @@ public class mapaBean {
 	marcacoesMapaModel.addOverlay(new Marker(coord2, "Entrega do Pedido 20") );
 	marcacoesMapaModel.addOverlay(new Marker(coord3, "Devolução"));
 	
-	
-	
+
 	
 	
 	return marcacoesMapaModel;
