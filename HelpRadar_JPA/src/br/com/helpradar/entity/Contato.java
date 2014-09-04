@@ -21,11 +21,6 @@ public class Contato {
 	private int id;
 	
 	
-	
-
-	@OneToOne
-	private Usuario usuario;
-	
 	//O Email no contato pode ser outro email além do email de cadastro
 	private List<String> emailPublicos;
 	
@@ -39,11 +34,10 @@ public class Contato {
 	private boolean mostraPerfil;
 
 
-	public Contato(int id, Usuario usuario, List<String> emailPublicos,
+	public Contato(int id, List<String> emailPublicos,
 			List<String> telefones, List<String> social, boolean mostraPerfil) {
 		super();
 		this.id = id;
-		this.usuario = usuario;
 		this.emailPublicos = emailPublicos;
 		this.telefones = telefones;
 		this.social = social;
@@ -80,14 +74,6 @@ public class Contato {
 
 	public void setTelefones(List<String> telefones) {
 		this.telefones = telefones;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 

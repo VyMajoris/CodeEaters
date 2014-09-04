@@ -1,21 +1,13 @@
 package br.com.helpradar.entity;
 
-import java.sql.Date;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @SequenceGenerator(name="seqAvaliacao", sequenceName="SEQ_AVALIACAO", allocationSize=1)
@@ -29,7 +21,7 @@ public class Avaliacao {
 	private String descricao;
 
 	//será provida a Data do sistema no input, mas o usuário poderá alterar
-	private Date dataAvaliacao;
+	private Calendar dataAvaliacao;
 
 	private String titulo;
 
@@ -39,11 +31,12 @@ public class Avaliacao {
 
 
 
-	public Avaliacao(int id,
-			String descricao, Date dataAvaliacao, String titulo, Integer nota) {
+	
+
+	public Avaliacao(int id, String descricao, Calendar dataAvaliacao,
+			String titulo, Integer nota) {
 		super();
 		this.id = id;
-	
 		this.descricao = descricao;
 		this.dataAvaliacao = dataAvaliacao;
 		this.titulo = titulo;
@@ -92,14 +85,21 @@ public class Avaliacao {
 	}
 
 
-	public Date getDataAvaliacao() {
+	public Calendar getDataAvaliacao() {
 		return dataAvaliacao;
 	}
 
 
-	public void setDataAvaliacao(Date dataAvaliacao) {
+	public void setDataAvaliacao(Calendar dataAvaliacao) {
 		this.dataAvaliacao = dataAvaliacao;
 	}
+
+
+
+
+
+
+	
 	
 	
 

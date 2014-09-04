@@ -6,17 +6,25 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.com.fiap.cliente.dao.ClienteDAO;
-import br.com.fiap.cliente.dao.impl.ClienteDAOImpl;
-import br.com.fiap.cliente.entity.Cliente;
-import br.com.fiap.cliente.entity.Endereco;
-import br.com.fiap.dao.EntityManagerFactorySingleton;
-import br.com.fiap.pacote.dao.PacoteDAO;
-import br.com.fiap.pacote.dao.ReservaDAO;
-import br.com.fiap.pacote.dao.impl.PacoteDAOImpl;
-import br.com.fiap.pacote.dao.impl.ReservaDAOImpl;
-import br.com.fiap.pacote.entity.Pacote;
-import br.com.fiap.pacote.entity.Reserva;
+import br.com.helpradar.dao.AssistenteDAO;
+import br.com.helpradar.dao.AvaliacaoDAO;
+import br.com.helpradar.dao.ContatoDAO;
+import br.com.helpradar.dao.EntityManagerFactorySingleton;
+import br.com.helpradar.dao.EspecialidadeDAO;
+import br.com.helpradar.dao.IdentificacaoDAO;
+import br.com.helpradar.dao.UsuarioDAO;
+import br.com.helpradar.dao.impl.AssistenteDAOImpl;
+import br.com.helpradar.dao.impl.AvaliacaoDAOImpl;
+import br.com.helpradar.dao.impl.ContatoDAOImpl;
+import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
+import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
+import br.com.helpradar.dao.impl.UsuarioDAOImpl;
+import br.com.helpradar.entity.Assistente;
+import br.com.helpradar.entity.Avaliacao;
+import br.com.helpradar.entity.Contato;
+import br.com.helpradar.entity.Especialidade;
+import br.com.helpradar.entity.Identificacao;
+import br.com.helpradar.entity.Usuario;
 
 public class PopulaBanco {
 
@@ -42,9 +50,10 @@ public class PopulaBanco {
 		//INICIO da persistencia de 3 Avaliacoes
 		Calendar c = Calendar.getInstance();
 		
-		Avaliacao avaliacao1 = new Avaliacao(1, "Ruim", c.getTime(), "Titulo1", 9 );
-		Avaliacao avaliacao2 = new Avaliacao(1, "Bom", c.getTime(), "Titulo2", 5 );
-		Avaliacao avaliacao3 = new Avaliacao(1, "Sem avaliacao", c.getTime(), "Titulo3", null );
+		
+		Avaliacao avaliacao1 = new Avaliacao(1, "Muito Bom", c, "Titulo1", 5);
+		Avaliacao avaliacao2 = new Avaliacao(2, "Bom", c, "Titulo2", 3 );
+		Avaliacao avaliacao3 = new Avaliacao(3, "Sem avaliacao", c, "Titulo3", null);
 		
 		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 		avaliacaoDAO.insert(avaliacao1);
@@ -52,26 +61,6 @@ public class PopulaBanco {
 		avaliacaoDAO.insert(avaliacao3);
 		
 		//FIM da persistencia de 3 Avaliacoes
-		
-		
-		
-		//INICIO da persistencia de 3 Usuario	
-		List<Usuario> listAmg2 = new ArrayList<>();
-		listAmg.add(usuario1);
-		
-		List<Usuario> listAmg3 = new ArrayList<>();
-		listAmg1.add(usuario2);
-
-		
-		Usuario usuario1 = new Usuario(1, "Pedro Henrique", 1, true, null);
-		Usuario usuario2 = new Usuario(2, "Felipe José", 2, false, listAmg2);
-		Usuario usuario3 = new Usuario(3, "Eduardo", 3, true, listAmg3 );
-				
-		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
-		usuarioDAO.insert(usuario1);
-		usuarioDAO.insert(usuario2);
-		usuarioDAO.insert(usuario3);
-		//FIM da persistencia de 3 Usuario
 		
 		//INICIO da persistencia de 3 Contato
 		List<String> listEmail = new ArrayList<>();
@@ -86,13 +75,16 @@ public class PopulaBanco {
 		List<String> listTel2 = new ArrayList<>();
 		listTel.add("56611949");
 		
+		List<String> listTel3 = new ArrayList<>();
+		listTel.add("12345678");
+		
 		List<String> listEmail3 = new ArrayList<>();
 		listEmail.add("emailUser1@gmail.com");
 		
 		
-		Contato contato1 = new Contato(1, 1, listEmail, listTel, false, true );
-		Contato contato2 = new Contato(2, 2, listEmail2, listTel2, false, true);
-		Contato contato3 = new Contato(3, 3, listEmail3, null, false, false);
+		Contato contato1 = new Contato(1, listEmail, listTel, null, true);
+		Contato contato2 = new Contato(2, listEmail2, listTel2, null, true);
+		Contato contato3 = new Contato(4, listEmail3, listTel3, null, true);
 		
 		ContatoDAO contatoDAO = new ContatoDAOImpl(em);
 		contatoDAO.insert(contato1);
@@ -102,23 +94,24 @@ public class PopulaBanco {
 		//FIM da persistencia de 3 Contato
 		
 		
-		//INICIO da persistencia de 3 Identificacao	
+		//INICIO da persistencia de 3 Usuario	
+		//new Usuario(1, "Pedro Henrique", 1, true, null);
+		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1);
 		List<Usuario> listAmg2 = new ArrayList<>();
-		listAmg.add(usuario1);
-				
+		listAmg2.add(usuario1);
+		
+		Usuario usuario2 = new Usuario(2, "Felipe Jose", false, listAmg2, contato2);
 		List<Usuario> listAmg3 = new ArrayList<>();
-		listAmg1.add(usuario2);
+		listAmg3.add(usuario2);
 
-				
-		Identificacao identificacao1 = new Identificacao(1, "Pedro Henrique", 1, true, null);
-		Usuario usuario2 = new Usuario(2, "Felipe José", 2, false, listAmg2);
-		Usuario usuario3 = new Usuario(3, "Eduardo", 3, true, listAmg3 );
+		Usuario usuario3 = new Usuario(3, "Eduardo",false, listAmg3, contato3);
+		
 				
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 		usuarioDAO.insert(usuario1);
 		usuarioDAO.insert(usuario2);
 		usuarioDAO.insert(usuario3);
-		//FIM da persistencia de 3 Identificacao
+		//FIM da persistencia de 3 Usuario
 		
 		
 		//INICIO da persistencia de 3 ASSISTENTE	
@@ -131,32 +124,54 @@ public class PopulaBanco {
 		List<Avaliacao> listAvaiacao3 = new ArrayList<>();
 		listAvaiacao3.add(avaliacao3);
 		
-
-				
-		Assistente assistente1 = new Assistente(1, "Pedro Henrique", 1, true, null, contato1, 1, c.getTime(), null, listAvaiacao);
-		Assistente assistente2 = new Assistente(2, "Eduardo", 1, true, null, contato2, 2, c.getTime(), null, listAvaiacao2);
-		Assistente assistente3 = new Assistente(3, "Felipe", 1, true, null, contato3, 3, c.getTime(), null, listAvaiacao3);
-						
+		
+		
+		Assistente assistente1 = new Assistente(1, "Pedro Henrique", true, null, contato1, false, identificacao1, listAvaiacao);
+		Assistente assistente2 = new Assistente(2, "Eduardo", false, null, contato2, true, identificacao2, listAvaiacao2);
+		Assistente assistente3 = new Assistente(3, "Felipe", true, null, contato3, false, identificacao3, listAvaiacao3);
+		
 		AssistenteDAO assistenteDAO = new AssistenteDAOImpl(em);
 		assistenteDAO.insert(assistente1);
 		assistenteDAO.insert(assistente2);
 		assistenteDAO.insert(assistente3);
 		//FIM da persistencia de 3 ASSISTENTE
 		
+		//INICIO da persistencia de 3 Identificacao	
+		List<String> listPecas1 = new ArrayList<>();
+		listPecas1.add("ListaDePecas1?");
+				
+		List<String> listPecas2 = new ArrayList<>();
+		listPecas2.add("ListaDePecas2?");
+		
+		List<String> listPecas3 = new ArrayList<>();
+		listPecas3.add("ListaDePecas3?");
+		
+		Identificacao identificacao1 = new Identificacao(1, assistente1, listPecas1);
+		Identificacao identificacao2 = new Identificacao(1, assistente2, listPecas2);
+		Identificacao identificacao3 = new Identificacao(1, assistente3, listPecas3);
+				
+		IdentificacaoDAO identificacaoDAO = new IdentificacaoDAOImpl(em);
+		identificacaoDAO.insert(identificacao1);
+		identificacaoDAO.insert(identificacao2);
+		identificacaoDAO.insert(identificacao3);
+		//FIM da persistencia de 3 Identificacao
+		
+		
+		
 		
 		//INICIO da persistencia de 3 Identificacao	3
 		List<String> listPecas = new ArrayList<>();
 		listPecas.add("roupa roxa");
 		
-		List<String> listPecas2 = new ArrayList<>();
-		listPecas2.add("roupa preta");
+		List<String> listPecas21 = new ArrayList<>();
+		listPecas21.add("roupa preta");
 		
-		List<String> listPecas3 = new ArrayList<>();
-		listPecas3.add("roupa rosa");
+		List<String> listPecas31 = new ArrayList<>();
+		listPecas31.add("roupa rosa");
 		
-		Identificacao identificacao1 = new Identificacao(1, assistente1, 1, listPecas);
-		Identificacao identificacao2 = new Identificacao(2, assistente2, 2, listPecas2);
-		Identificacao identificacao3 = new Identificacao(3, assistente3, 3, listPecas3);
+		Identificacao identificacao1 = new Identificacao(1, assistente1, listPecas1);
+		Identificacao identificacao2 = new Identificacao(2, assistente2, listPecas21);
+		Identificacao identificacao3 = new Identificacao(3, assistente3, listPecas31);
 								
 		IdentificacaoDAO identificacaoDAO = new IdentificacaoDAOImpl(em);
 		identificacaoDAO.insert(identificacao1);

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -16,12 +15,11 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqUsuario", sequenceName="SEQ_USUARIO", allocationSize=1)
 public class Usuario {
 
-	public Usuario(int id, String nome, byte[] foto, boolean social,
+	public Usuario(int id, String nome, boolean social,
 			List<Usuario> listaAmigos, Contato contato) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.foto = foto;
 		this.social = social;
 		this.listaAmigos = listaAmigos;
 		this.contato = contato;
@@ -34,10 +32,6 @@ public class Usuario {
 	//Nome será provida pela API de login, mas poderá ser mudado
 	@Column(nullable=false)
 	private String nome;
-
-	//Foto será provida pela API de login, mas poderá ser mudado
-	@Lob
-	private byte[] foto;
 
 	//TRUE = GOOGLE+
 	//FALSE = FACEBOOK
@@ -56,14 +50,6 @@ public class Usuario {
 
 	public void setContato(Contato contato) {
 		this.contato = contato;
-	}
-
-	public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
 	}
 
 	public void setId(int id) {

@@ -4,7 +4,6 @@ package br.com.helpradar.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -13,11 +12,6 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqAssistente", sequenceName="SEQ_ASSISTENTE", allocationSize=1)
 public class Assistente extends Usuario {
 	
-	//uma imagem para ser mostrada ao lado do avatar do assistente
-	@Lob
-	private byte[] banner;
-	
-
 	//registra se o assistente ja se logou no dia corrente
 	//caso nao, sera pedido ao assisente para atualizar sua identificao
 	private boolean diaLogado;
@@ -29,13 +23,10 @@ public class Assistente extends Usuario {
 	private List<Avaliacao> listaAvaliacoes;
 	
 
-
-	public Assistente(int id, String nome, byte[] foto, boolean social,
-			List<Usuario> listaAmigos, Contato contato, byte[] banner,
-			boolean diaLogado, Identificacao identificacao,
-			List<Avaliacao> listaAvaliacoes) {
-		super(id, nome, foto, social, listaAmigos, contato);
-		this.banner = banner;
+	public Assistente(int id, String nome, boolean social,
+			List<Usuario> listaAmigos, Contato contato, boolean diaLogado,
+			Identificacao identificacao, List<Avaliacao> listaAvaliacoes) {
+		super(id, nome, social, listaAmigos, contato);
 		this.diaLogado = diaLogado;
 		this.identificacao = identificacao;
 		this.listaAvaliacoes = listaAvaliacoes;
@@ -65,13 +56,8 @@ public class Assistente extends Usuario {
 		this.diaLogado = diaLogado;
 	}
 
-	public byte[] getBanner() {
-		return banner;
-	}
 
-	public void setBanner(byte[] banner) {
-		this.banner = banner;
-	}
+
 	
 
 }
