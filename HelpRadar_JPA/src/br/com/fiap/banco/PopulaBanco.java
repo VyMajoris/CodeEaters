@@ -126,9 +126,9 @@ public class PopulaBanco {
 		
 		
 		
-		Assistente assistente1 = new Assistente(1, "Pedro Henrique", true, null, contato1, false, identificacao1, listAvaiacao);
-		Assistente assistente2 = new Assistente(2, "Eduardo", false, null, contato2, true, identificacao2, listAvaiacao2);
-		Assistente assistente3 = new Assistente(3, "Felipe", true, null, contato3, false, identificacao3, listAvaiacao3);
+		Assistente assistente1 = new Assistente(1, "Pedro Henrique", true, null, contato1, false, null, listAvaiacao);
+		Assistente assistente2 = new Assistente(2, "Eduardo", false, null, contato2, true, null, listAvaiacao2);
+		Assistente assistente3 = new Assistente(3, "Felipe", true, null, contato3, false, null, listAvaiacao3);
 		
 		AssistenteDAO assistenteDAO = new AssistenteDAOImpl(em);
 		assistenteDAO.insert(assistente1);
@@ -169,14 +169,14 @@ public class PopulaBanco {
 		List<String> listPecas31 = new ArrayList<>();
 		listPecas31.add("roupa rosa");
 		
-		Identificacao identificacao1 = new Identificacao(1, assistente1, listPecas1);
-		Identificacao identificacao2 = new Identificacao(2, assistente2, listPecas21);
-		Identificacao identificacao3 = new Identificacao(3, assistente3, listPecas31);
+		Identificacao ident1 = new Identificacao(1, assistente1, listPecas1);
+		Identificacao ident2 = new Identificacao(2, assistente2, listPecas21);
+		Identificacao ident3 = new Identificacao(3, assistente3, listPecas31);
 								
-		IdentificacaoDAO identificacaoDAO = new IdentificacaoDAOImpl(em);
-		identificacaoDAO.insert(identificacao1);
-		identificacaoDAO.insert(identificacao2);
-		identificacaoDAO.insert(identificacao3);
+		IdentificacaoDAO identDAO = new IdentificacaoDAOImpl(em);
+		identDAO.insert(ident1);
+		identDAO.insert(ident2);
+		identDAO.insert(ident3);
 		//FIM da persistencia de 3 Identificacao
 		
 		
