@@ -3,6 +3,7 @@ package br.com.helpradar.entity;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -39,6 +40,7 @@ public class Usuario {
 	private boolean social;
 
 	@OneToMany
+	@ElementCollection
 	private List<Usuario> listaAmigos;
 
 	@OneToOne

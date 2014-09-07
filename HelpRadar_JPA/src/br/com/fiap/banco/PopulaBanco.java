@@ -34,9 +34,9 @@ public class PopulaBanco {
 		
 		 //INICIO da persistencia de 3 especialidades 
 		 
-		Especialidade especialidade1 = new Especialidade(1, "Encanador");
-		Especialidade especialidade2 = new Especialidade(2, "Mecanico");
-		Especialidade especialidade3 = new Especialidade(3, "Programador");
+		Especialidade especialidade1 = new Especialidade("Encanador");
+		Especialidade especialidade2 = new Especialidade("Mecanico");
+		Especialidade especialidade3 = new Especialidade("Programador");
 		
 		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
 		especialidadeDAO.insert(especialidade1);
@@ -51,9 +51,9 @@ public class PopulaBanco {
 		Calendar c = Calendar.getInstance();
 		
 		
-		Avaliacao avaliacao1 = new Avaliacao(1, "Muito Bom", c, "Titulo1", 5);
-		Avaliacao avaliacao2 = new Avaliacao(2, "Bom", c, "Titulo2", 3 );
-		Avaliacao avaliacao3 = new Avaliacao(3, "Sem avaliacao", c, "Titulo3", null);
+		Avaliacao avaliacao1 = new Avaliacao("Muito Bom", c, "Titulo1", 5);
+		Avaliacao avaliacao2 = new Avaliacao("Bom", c, "Titulo2", 3 );
+		Avaliacao avaliacao3 = new Avaliacao("Sem avaliacao", c, "Titulo3", null);
 		
 		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 		avaliacaoDAO.insert(avaliacao1);
@@ -82,9 +82,9 @@ public class PopulaBanco {
 		listEmail.add("emailUser1@gmail.com");
 		
 		
-		Contato contato1 = new Contato(1, listEmail, listTel, null, true);
-		Contato contato2 = new Contato(2, listEmail2, listTel2, null, true);
-		Contato contato3 = new Contato(4, listEmail3, listTel3, null, true);
+		Contato contato1 = new Contato(listEmail, listTel, null, true);
+		Contato contato2 = new Contato(listEmail2, listTel2, null, true);
+		Contato contato3 = new Contato(listEmail3, listTel3, null, true);
 		
 		ContatoDAO contatoDAO = new ContatoDAOImpl(em);
 		contatoDAO.insert(contato1);
@@ -95,7 +95,6 @@ public class PopulaBanco {
 		
 		
 		//INICIO da persistencia de 3 Usuario	
-		//new Usuario(1, "Pedro Henrique", 1, true, null);
 		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1);
 		List<Usuario> listAmg2 = new ArrayList<>();
 		listAmg2.add(usuario1);
@@ -146,9 +145,9 @@ public class PopulaBanco {
 		List<String> listPecas3 = new ArrayList<>();
 		listPecas3.add("ListaDePecas3?");
 		
-		Identificacao identificacao1 = new Identificacao(1, assistente1, listPecas1);
-		Identificacao identificacao2 = new Identificacao(1, assistente2, listPecas2);
-		Identificacao identificacao3 = new Identificacao(1, assistente3, listPecas3);
+		Identificacao identificacao1 = new Identificacao(assistente1, listPecas1);
+		Identificacao identificacao2 = new Identificacao(assistente2, listPecas2);
+		Identificacao identificacao3 = new Identificacao(assistente3, listPecas3);
 				
 		IdentificacaoDAO identificacaoDAO = new IdentificacaoDAOImpl(em);
 		identificacaoDAO.insert(identificacao1);
@@ -159,26 +158,26 @@ public class PopulaBanco {
 		
 		
 		
-		//INICIO da persistencia de 3 Identificacao	3
-		List<String> listPecas = new ArrayList<>();
-		listPecas.add("roupa roxa");
-		
-		List<String> listPecas21 = new ArrayList<>();
-		listPecas21.add("roupa preta");
-		
-		List<String> listPecas31 = new ArrayList<>();
-		listPecas31.add("roupa rosa");
-		
-		Identificacao ident1 = new Identificacao(1, assistente1, listPecas1);
-		Identificacao ident2 = new Identificacao(2, assistente2, listPecas21);
-		Identificacao ident3 = new Identificacao(3, assistente3, listPecas31);
-								
-		IdentificacaoDAO identDAO = new IdentificacaoDAOImpl(em);
-		identDAO.insert(ident1);
-		identDAO.insert(ident2);
-		identDAO.insert(ident3);
-		//FIM da persistencia de 3 Identificacao
-		
+//		//INICIO da persistencia de 3 Identificacao	3
+//		List<String> listPecas = new ArrayList<>();
+//		listPecas.add("roupa roxa");
+//		
+//		List<String> listPecas21 = new ArrayList<>();
+//		listPecas21.add("roupa preta");
+//		
+//		List<String> listPecas31 = new ArrayList<>();
+//		listPecas31.add("roupa rosa");
+//		
+//		Identificacao ident1 = new Identificacao(1, assistente1, listPecas1);
+//		Identificacao ident2 = new Identificacao(2, assistente2, listPecas21);
+//		Identificacao ident3 = new Identificacao(3, assistente3, listPecas31);
+//								
+//		IdentificacaoDAO identDAO = new IdentificacaoDAOImpl(em);
+//		identDAO.insert(ident1);
+//		identDAO.insert(ident2);
+//		identDAO.insert(ident3);
+//		//FIM da persistencia de 3 Identificacao
+//		
 		
 		
 		

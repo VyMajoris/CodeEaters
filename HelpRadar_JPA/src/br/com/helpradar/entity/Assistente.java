@@ -3,6 +3,7 @@ package br.com.helpradar.entity;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,7 +20,7 @@ public class Assistente extends Usuario {
 	@OneToOne
 	private Identificacao identificacao;
 	
-	@OneToMany
+	@OneToMany@ElementCollection
 	private List<Avaliacao> listaAvaliacoes;
 	
 
@@ -31,6 +32,8 @@ public class Assistente extends Usuario {
 		this.identificacao = identificacao;
 		this.listaAvaliacoes = listaAvaliacoes;
 	}
+	
+
 
 	public Identificacao getIdentificacao() {
 		return identificacao;

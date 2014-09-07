@@ -44,6 +44,16 @@ public class Avaliacao {
 	}
 
 
+	public Avaliacao(String descricao, Calendar dataAvaliacao, String titulo,
+			Integer nota) {
+		super();
+		this.descricao = descricao;
+		this.dataAvaliacao = dataAvaliacao;
+		this.titulo = titulo;
+		this.nota = nota;
+	}
+
+
 	public int getId() {
 		return id;
 	}

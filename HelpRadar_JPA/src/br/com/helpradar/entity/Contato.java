@@ -2,12 +2,11 @@ package br.com.helpradar.entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -22,17 +21,32 @@ public class Contato {
 	
 	
 	//O Email no contato pode ser outro email além do email de cadastro
+	@ElementCollection
 	private List<String> emailPublicos;
 	
 	//String para se adaptar facilmente com os diversos formatos de telefones pelo mundo
+	@ElementCollection
 	private List<String> telefones;
 	
 	//Uma lista de links de profiles de redes sociais extras, como LinkedIn
+	@ElementCollection
 	private List<String> social;
 	
 	//Será mostrado um link para a página do google+/facebook, caso o assistente deseje. Por isso, só é necessário um boolean
 	private boolean mostraPerfil;
 
+
+	
+
+	
+	public Contato(List<String> emailPublicos, List<String> telefones,
+			List<String> social, boolean mostraPerfil) {
+		super();
+		this.emailPublicos = emailPublicos;
+		this.telefones = telefones;
+		this.social = social;
+		this.mostraPerfil = mostraPerfil;
+	}
 
 	public Contato(int id, List<String> emailPublicos,
 			List<String> telefones, List<String> social, boolean mostraPerfil) {

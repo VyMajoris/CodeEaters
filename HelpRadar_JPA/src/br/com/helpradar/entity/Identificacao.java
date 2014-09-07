@@ -2,6 +2,7 @@ package br.com.helpradar.entity;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,8 +25,19 @@ public class Identificacao {
 	
 	//peças de roupas
 	//será guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
+	@ElementCollection
 	private List<String> pecas;
 
+
+
+	
+	
+
+	public Identificacao(Assistente assistente, List<String> pecas) {
+		super();
+		this.assistente = assistente;
+		this.pecas = pecas;
+	}
 
 
 
