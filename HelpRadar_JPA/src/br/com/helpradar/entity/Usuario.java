@@ -16,15 +16,7 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqUsuario", sequenceName="SEQ_USUARIO", allocationSize=1)
 public class Usuario {
 
-	public Usuario(int id, String nome, boolean social,
-			List<Usuario> listaAmigos, Contato contato) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.social = social;
-		this.listaAmigos = listaAmigos;
-		this.contato = contato;
-	}
+
 
 	//O ID será provido pelo API de login
 	@Id
@@ -45,9 +37,35 @@ public class Usuario {
 
 	@OneToOne
 	private Contato contato;
+	
 
+	@OneToOne(mappedBy="Assistente")
+	private Assistente assistente;
+	
 	public Contato getContato() {
 		return contato;
+	}
+	public Assistente getAssistente() {
+		return assistente;
+	}
+	
+	
+	public Usuario(){
+		
+	}
+	
+	public Usuario(int id, String nome, boolean social,
+			List<Usuario> listaAmigos, Contato contato, Assistente assistente) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.social = social;
+		this.listaAmigos = listaAmigos;
+		this.contato = contato;
+		this.assistente = assistente;
+	}
+	public void setAssistente(Assistente assistente) {
+		this.assistente = assistente;
 	}
 
 	public void setContato(Contato contato) {

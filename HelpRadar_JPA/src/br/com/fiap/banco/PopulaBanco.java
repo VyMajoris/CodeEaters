@@ -95,15 +95,15 @@ public class PopulaBanco {
 		
 		
 		//INICIO da persistencia de 3 Usuario	
-		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1);
+		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1, null);
 		List<Usuario> listAmg2 = new ArrayList<>();
 		listAmg2.add(usuario1);
 		
-		Usuario usuario2 = new Usuario(2, "Felipe Jose", false, listAmg2, contato2);
+		Usuario usuario2 = new Usuario(2, "Felipe Jose", false, listAmg2, contato2, null);
 		List<Usuario> listAmg3 = new ArrayList<>();
 		listAmg3.add(usuario2);
 
-		Usuario usuario3 = new Usuario(3, "Eduardo",false, listAmg3, contato3);
+		Usuario usuario3 = new Usuario(3, "Eduardo",false, listAmg3, contato3, null);
 		
 				
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
@@ -125,9 +125,9 @@ public class PopulaBanco {
 		
 		
 		
-		Assistente assistente1 = new Assistente(1, "Pedro Henrique", true, null, contato1, false, null, listAvaiacao);
-		Assistente assistente2 = new Assistente(2, "Eduardo", false, null, contato2, true, null, listAvaiacao2);
-		Assistente assistente3 = new Assistente(3, "Felipe", true, null, contato3, false, null, listAvaiacao3);
+		Assistente assistente1 = new Assistente(1, false, null, listAvaiacao, usuario1);
+		Assistente assistente2 = new Assistente(1, false, null, listAvaiacao2, usuario3);
+		Assistente assistente3 = new Assistente(1, false, null, listAvaiacao3, usuario2);
 		
 		AssistenteDAO assistenteDAO = new AssistenteDAOImpl(em);
 		assistenteDAO.insert(assistente1);
