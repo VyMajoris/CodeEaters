@@ -10,6 +10,9 @@ import javax.persistence.EntityManager;
 
 
 
+
+
+
 import br.com.helpradar.dao.AvaliacaoDAO;
 import br.com.helpradar.dao.ContatoDAO;
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
@@ -26,7 +29,6 @@ import br.com.helpradar.entity.Contato;
 import br.com.helpradar.entity.Especialidade;
 import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.TipoUsuario;
-
 import br.com.helpradar.entity.Usuario;
 
 public class PopulaBanco {
