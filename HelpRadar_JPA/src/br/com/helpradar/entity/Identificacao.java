@@ -19,8 +19,7 @@ public class Identificacao {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqIdentificacao")
 	private int id;
 	
-	@OneToOne
-	private Assistente assistente;
+
 	
 	
 	//peças de roupas
@@ -33,18 +32,14 @@ public class Identificacao {
 	
 	
 
-	public Identificacao(Assistente assistente, List<String> pecas) {
+
+	/**
+	 * @param id
+	 * @param pecas
+	 */
+	public Identificacao(List<String> pecas) {
 		super();
-		this.assistente = assistente;
-		this.pecas = pecas;
-	}
-
-
-
-	public Identificacao(int id, Assistente assistente, List<String> pecas) {
-		super();
-		this.id = id;
-		this.assistente = assistente;
+		
 		this.pecas = pecas;
 	}
 
@@ -64,17 +59,12 @@ public class Identificacao {
 		this.pecas = pecas;
 	}
 
-	public Assistente getAssistente() {
-		return assistente;
-	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setAssistente(Assistente assistente) {
-		this.assistente = assistente;
-	}
+
 	
 	
 	

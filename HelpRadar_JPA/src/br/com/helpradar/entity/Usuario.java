@@ -16,6 +16,43 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqUsuario", sequenceName="SEQ_USUARIO", allocationSize=1)
 public class Usuario {
 
+	/**
+	 * Usuário
+	 * @param id
+	 * @param nome
+	 * @param social
+	 * @param listaAmigos
+	 * @param contato
+	 * @param tipoUsuario
+	 */
+	public Usuario(int id, String nome, boolean social,
+			List<Usuario> listaAmigos, Contato contato,
+			TipoUsuario tipoUsuario) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.social = social;
+		this.listaAmigos = listaAmigos;
+		this.contato = contato;
+		this.tipoUsuario = tipoUsuario;
+	}
+
+
+	/**
+	 * Assistente
+	 * @param tipoUsuario
+	 * @param diaLogado
+	 * @param identificacao
+	 * @param listaAvaliacoes
+	 */
+	public Usuario(TipoUsuario tipoUsuario, boolean diaLogado,
+			Identificacao identificacao, List<Avaliacao> listaAvaliacoes) {
+		super();
+		this.tipoUsuario = tipoUsuario;
+		this.diaLogado = diaLogado;
+		this.identificacao = identificacao;
+		this.listaAvaliacoes = listaAvaliacoes;
+	}
 
 
 	//O ID será provido pelo API de login
@@ -37,39 +74,23 @@ public class Usuario {
 
 	@OneToOne
 	private Contato contato;
-	
 
-	@OneToOne(mappedBy="Assistente")
-	private Assistente assistente;
-	
-	public Contato getContato() {
-		return contato;
-	}
-	public Assistente getAssistente() {
-		return assistente;
-	}
-	
-	
-	public Usuario(){
-		
-	}
-	
-	public Usuario(int id, String nome, boolean social,
-			List<Usuario> listaAmigos, Contato contato, Assistente assistente) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.social = social;
-		this.listaAmigos = listaAmigos;
-		this.contato = contato;
-		this.assistente = assistente;
-	}
-	public void setAssistente(Assistente assistente) {
-		this.assistente = assistente;
-	}
 
-	public void setContato(Contato contato) {
-		this.contato = contato;
+	private TipoUsuario tipoUsuario;
+
+
+	//ASSISTENTE
+	private boolean diaLogado;
+
+	@OneToOne
+	private Identificacao identificacao;
+
+	@OneToMany@ElementCollection
+	private List<Avaliacao> listaAvaliacoes;
+	//ASSISTENTE
+
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {
@@ -82,11 +103,6 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-
-	public int getId() {
-		return id;
 	}
 
 	public boolean isSocial() {
@@ -104,6 +120,49 @@ public class Usuario {
 	public void setListaAmigos(List<Usuario> listaAmigos) {
 		this.listaAmigos = listaAmigos;
 	}
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public boolean isDiaLogado() {
+		return diaLogado;
+	}
+
+	public void setDiaLogado(boolean diaLogado) {
+		this.diaLogado = diaLogado;
+	}
+
+	public Identificacao getIdentificacao() {
+		return identificacao;
+	}
+
+	public void setIdentificacao(Identificacao identificacao) {
+		this.identificacao = identificacao;
+	}
+
+	public List<Avaliacao> getListaAvaliacoes() {
+		return listaAvaliacoes;
+	}
+
+	public void setListaAvaliacoes(List<Avaliacao> listaAvaliacoes) {
+		this.listaAvaliacoes = listaAvaliacoes;
+	}
+
+
+
 
 
 
