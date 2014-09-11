@@ -99,7 +99,7 @@ public class PopulaBanco {
 		//FIM da persistencia de 3 Contato
 		
 		
-		//INSERE 3 USU¡RIOS DEFAULT
+		//INSERE 3 USU√ÅRIOS DEFAULT
 		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1, TipoUsuario.DEFAULT);
 		List<Usuario> listAmg2 = new ArrayList<>();
 		listAmg2.add(usuario1);
@@ -116,7 +116,7 @@ public class PopulaBanco {
 		usuarioDAO.insert(usuario1);
 		usuarioDAO.insert(usuario2);
 		usuarioDAO.insert(usuario3);
-		//FIM  3 USU¡RIOS DEFAULT
+		//FIM  3 USU√ÅRIOS DEFAULT
 		
 	
 		
@@ -161,7 +161,7 @@ public class PopulaBanco {
 		
 		
 		
-		//UPGRADE DE 2 USU¡RIOS PARA ASSISTENTE
+		//UPGRADE DE 2 USU√ÅRIOS PARA ASSISTENTE
 				usuario2.setTipoUsuario(TipoUsuario.ASSISTENTE);
 				usuario2.setDiaLogado(true);
 				usuario2.setIdentificacao(identificacao2);
@@ -172,10 +172,9 @@ public class PopulaBanco {
 				usuario3.setIdentificacao(identificacao3);
 				usuario3.setListaAvaliacoes(listAvaiacao3);
 				
+				usuarioDAO.update(usuario2);
+				usuarioDAO.update(usuario3);
 				
-		
-		
-		
 	}
 
 }
