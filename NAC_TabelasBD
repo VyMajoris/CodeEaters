@@ -1,0 +1,51 @@
+Avaliacao
+  ID
+  DATAAVALIACAO
+  DESCRICAO
+  NOTA
+  TITULO
+
+Contato
+  ID
+  MOSTRAPERFIL
+
+Contato_EmailPublicos
+  Contato_ID
+  EmailPublicos
+
+Contato_Social
+  Contato_ID
+  Social
+
+Contato_Telefones
+  Contato_ID
+  Telefones
+
+Especialidade
+  ID
+  NomeEspecialidade
+  
+Identificacao
+  Id
+  
+Identificacao_Pecas
+  Identificacao_Pecas
+  Pecas
+  
+Usuario
+  ID
+  DiaLogado
+  Nome
+  Social
+  TipoUsuario
+  Contato_ID
+  Identificacao_ID
+  
+Usuario_Avaliacao
+  Usuario_ID
+  ListaAvaliacoes_ID
+  
+Usuario_Usuario
+  Usuario_ID
+  ListaAmigos_ID
+  
