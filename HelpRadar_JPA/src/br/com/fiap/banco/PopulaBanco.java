@@ -37,20 +37,6 @@ public class PopulaBanco {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 
 
-		//INICIO da persistencia de 3 especialidades 
-
-		Especialidade especialidade1 = new Especialidade("Encanador");
-		Especialidade especialidade2 = new Especialidade("Mecanico");
-		Especialidade especialidade3 = new Especialidade("Programador");
-
-		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
-		especialidadeDAO.insert(especialidade1);
-		especialidadeDAO.insert(especialidade2);
-		especialidadeDAO.insert(especialidade3);
-
-
-		//FIM da persistencia das 3 especialidades
-
 
 
 		//INICIO da persistencia de 3 Avaliacoes
@@ -100,7 +86,7 @@ public class PopulaBanco {
 		//FIM da persistencia de 3 Contato
 
 
-		//INSERE 3 USUÁRIOS DEFAULT
+		//INSERE 3 USURIOS DEFAULT
 		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1, TipoUsuario.DEFAULT);
 		List<Usuario> listAmg2 = new ArrayList<>();
 		listAmg2.add(usuario1);
@@ -117,7 +103,7 @@ public class PopulaBanco {
 		usuarioDAO.insert(usuario1);
 		usuarioDAO.insert(usuario2);
 		usuarioDAO.insert(usuario3);
-		//FIM  3 USUÁRIOS DEFAULT
+		//FIM  3 USURIOS DEFAULT
 
 
 
@@ -158,37 +144,63 @@ public class PopulaBanco {
 		identificacaoDAO.insert(identificacao3);
 		//FIM da persistencia de 3 Identificacao
 
+		
+		
+		
+
+		Especialidade especialidade1 = new Especialidade("Encanador");
+		Especialidade especialidade2 = new Especialidade("Mecanico");
+		Especialidade especialidade3 = new Especialidade("Programador");
+
+		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
+		especialidadeDAO.insert(especialidade1);
+		especialidadeDAO.insert(especialidade2);
+		especialidadeDAO.insert(especialidade3);
+
+
+	
+
+		
+		Especialidade especialidade4 = new Especialidade("4Especialidade");
+		Especialidade especialidade5 = new Especialidade("5Especialidade");
+		Especialidade especialidade6 = new Especialidade("6Especialidade");
+		
+		especialidadeDAO.insert(especialidade4);
+		especialidadeDAO.insert(especialidade5);
+		especialidadeDAO.insert(especialidade6);
+				
 
 
 
-
-		//UPGRADE DE 2 USUÁRIOS PARA ASSISTENTE
-
-		List<Especialidade> listEspecialidade1 = new ArrayList<>();
-		listEspecialidade1.add(especialidade3);
-		listEspecialidade1.add(especialidade2);
-		listEspecialidade1.add(especialidade1);
-
-		List<Especialidade> listEspecialidade2 = new ArrayList<>();
-		listEspecialidade2.add(especialidade1);
-		listEspecialidade2.add(especialidade2);
-		listEspecialidade2.add(especialidade3);
-
-
+		
+		
+		
+		
+		
 		usuario2.setTipoUsuario(TipoUsuario.ASSISTENTE);
 		usuario2.setDiaLogado(true);
 		usuario2.setIdentificacao(identificacao2);
 		usuario2.setListaAvaliacoes(listAvaiacao2);
-		usuario2.setListaEspecialidade(listEspecialidade1);
+		usuario2.getEspecialidade().add(especialidade1);
+		usuario2.getEspecialidade().add(especialidade2);
+		usuario2.getEspecialidade().add(especialidade3);
 		usuarioDAO.update(usuario2);
 
 		usuario3.setTipoUsuario(TipoUsuario.ASSISTENTE);
 		usuario3.setDiaLogado(true);
 		usuario3.setIdentificacao(identificacao3);
 		usuario3.setListaAvaliacoes(listAvaiacao3);
-		usuario3.setListaEspecialidade(listEspecialidade2);
+		usuario3.getEspecialidade().add(especialidade4);
+		usuario3.getEspecialidade().add(especialidade5);
+		usuario3.getEspecialidade().add(especialidade6);
 		usuarioDAO.update(usuario3);
 
+		////////////busca
+		
+		List<Usuario> listaUsuarioPorAssistente =  usuarioDAO.BuscarAssistentePorEspecialidade(4);
+		for (Usuario usuario : listaUsuarioPorAssistente) {
+			System.out.println(usuario.getNome()); 
+		}
 
 
 

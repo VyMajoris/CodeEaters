@@ -22,8 +22,8 @@ public class Identificacao {
 
 	
 	
-	//peças de roupas
-	//será guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
+	//pecas de roupas
+	//sera guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
 	@ElementCollection
 	private List<String> pecas;
 

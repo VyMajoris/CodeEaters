@@ -1,11 +1,19 @@
 package br.com.helpradar.entity;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -16,6 +24,8 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqUsuario", sequenceName="SEQ_USUARIO", allocationSize=1)
 public class Usuario {
 
+
+
 	/**
 	 * Usuário
 	 * @param id
@@ -24,6 +34,7 @@ public class Usuario {
 	 * @param listaAmigos
 	 * @param contato
 	 * @param tipoUsuario
+	 * @param avatar
 	 */
 	public Usuario(int id, String nome, boolean social,
 			List<Usuario> listaAmigos, Contato contato,
@@ -35,24 +46,51 @@ public class Usuario {
 		this.listaAmigos = listaAmigos;
 		this.contato = contato;
 		this.tipoUsuario = tipoUsuario;
+
 	}
+
+
+
 
 
 	/**
 	 * Assistente
+	 * @param nome
+	 * @param avatar
 	 * @param tipoUsuario
 	 * @param diaLogado
 	 * @param identificacao
 	 * @param listaAvaliacoes
+	 * @param especialidade
 	 */
-	public Usuario(TipoUsuario tipoUsuario, boolean diaLogado,
-			Identificacao identificacao, List<Avaliacao> listaAvaliacoes) {
+	public Usuario(String nome, byte[] avatar, TipoUsuario tipoUsuario,
+			boolean diaLogado, Identificacao identificacao,
+			List<Avaliacao> listaAvaliacoes, Set<Especialidade> especialidade) {
 		super();
+		this.nome = nome;
+		this.avatar = avatar;
 		this.tipoUsuario = tipoUsuario;
 		this.diaLogado = diaLogado;
 		this.identificacao = identificacao;
 		this.listaAvaliacoes = listaAvaliacoes;
+		this.especialidade = especialidade;
 	}
+
+
+
+
+
+	public Set<Especialidade> getEspecialidade() {
+		return especialidade;
+	}
+
+
+	public void setEspecialidade(Set<Especialidade> especialidade) {
+		this.especialidade = especialidade;
+	}
+
+
+
 
 
 	//O ID será provido pelo API de login
@@ -70,7 +108,23 @@ public class Usuario {
 
 	@OneToMany
 	@ElementCollection
+	@Column(name="AMIGO")
 	private List<Usuario> listaAmigos;
+
+	@Lob
+	private byte[] avatar;
+
+
+
+	public byte[] getAvatar() {
+		return avatar;
+	}
+
+
+	public void setAvatar(byte[] avatar) {
+		this.avatar = avatar;
+	}
+
 
 	@OneToOne
 	private Contato contato;
@@ -79,15 +133,25 @@ public class Usuario {
 	private TipoUsuario tipoUsuario;
 
 
-	//ASSISTENTE
+	//////////ASSISTENTE
 	private boolean diaLogado;
 
 	@OneToOne
 	private Identificacao identificacao;
 
-	@OneToMany@ElementCollection
+	@OneToMany
+	@ElementCollection
+	@Column(name="AVALIACAO")
 	private List<Avaliacao> listaAvaliacoes;
-	//ASSISTENTE
+
+	@ManyToMany(cascade = { CascadeType.ALL })  
+	@JoinTable(name = "USUARIO_ESPECIALIDADE", 
+	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
+	inverseJoinColumns = { @JoinColumn(name = "ESPECIALIDADE_ID") })  
+	@Column(name="ESPECIALIDADE")
+
+	private Set<Especialidade> especialidade = new HashSet<Especialidade>();  
+	/////////ASSISTENTE
 
 	public int getId() {
 		return id;

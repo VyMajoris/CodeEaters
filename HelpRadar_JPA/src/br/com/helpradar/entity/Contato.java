@@ -2,6 +2,7 @@ package br.com.helpradar.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +23,17 @@ public class Contato {
 	
 	//O Email no contato pode ser outro email além do email de cadastro
 	@ElementCollection
+	@Column(name="EMAIL_PUBLICO")
 	private List<String> emailPublicos;
 	
 	//String para se adaptar facilmente com os diversos formatos de telefones pelo mundo
 	@ElementCollection
+	@Column(name="TELEFONE")
 	private List<String> telefones;
 	
 	//Uma lista de links de profiles de redes sociais extras, como LinkedIn
 	@ElementCollection
+	@Column(name="SOCIAL")
 	private List<String> social;
 	
 	//Será mostrado um link para a página do google+/facebook, caso o assistente deseje. Por isso, só é necessário um boolean
