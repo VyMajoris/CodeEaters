@@ -18,10 +18,12 @@ public class Identificacao {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqIdentificacao")
 	private int id;
-	
 
-	
-	
+	public Identificacao(){
+
+	}
+
+
 	//pecas de roupas
 	//sera guardada no banco todas as peça para mostrar por meio de auto-complete para o assisente re-inserir
 	@ElementCollection
@@ -29,8 +31,8 @@ public class Identificacao {
 
 
 
-	
-	
+
+
 
 
 	/**
@@ -39,7 +41,7 @@ public class Identificacao {
 	 */
 	public Identificacao(List<String> pecas) {
 		super();
-		
+
 		this.pecas = pecas;
 	}
 
@@ -65,7 +67,7 @@ public class Identificacao {
 	}
 
 
-	
-	
-	
+
+
+
 }

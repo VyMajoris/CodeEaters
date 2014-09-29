@@ -14,35 +14,37 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name="seqContato", sequenceName="SEQ_CONTATO", allocationSize=1)
 public class Contato {
 
+	public Contato(){
 
-	
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqContato")
 	private int id;
-	
-	
+
+
 	//O Email no contato pode ser outro email além do email de cadastro
 	@ElementCollection
 	@Column(name="EMAIL_PUBLICO")
 	private List<String> emailPublicos;
-	
+
 	//String para se adaptar facilmente com os diversos formatos de telefones pelo mundo
 	@ElementCollection
 	@Column(name="TELEFONE")
 	private List<String> telefones;
-	
+
 	//Uma lista de links de profiles de redes sociais extras, como LinkedIn
 	@ElementCollection
 	@Column(name="SOCIAL")
 	private List<String> social;
-	
+
 	//Será mostrado um link para a página do google+/facebook, caso o assistente deseje. Por isso, só é necessário um boolean
 	private boolean mostraPerfil;
 
 
-	
 
-	
+
+
 	public Contato(List<String> emailPublicos, List<String> telefones,
 			List<String> social, boolean mostraPerfil) {
 		super();
@@ -103,12 +105,12 @@ public class Contato {
 		this.id = id;
 	}
 
-	
-	
-	
 
 
-	
-	
+
+
+
+
+
 
 }

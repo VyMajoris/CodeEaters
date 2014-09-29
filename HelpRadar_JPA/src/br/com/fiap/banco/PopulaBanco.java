@@ -13,6 +13,8 @@ import javax.persistence.EntityManager;
 
 
 
+
+
 import br.com.helpradar.dao.AvaliacaoDAO;
 import br.com.helpradar.dao.ContatoDAO;
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
@@ -33,24 +35,43 @@ import br.com.helpradar.entity.Usuario;
 
 public class PopulaBanco {
 
+	static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	public static void main(String[] args) {
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+		
+		//banco();
+
+		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
+		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
+		ContatoDAO contatoDAO = new ContatoDAOImpl(em);
+		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
+		
+	
+		
+		List<Integer> listaUsuarioPorAssistenteGPS =  usuarioDAO.BuscarAssistentePorEspecialidadeGPS("e");
+		for (Integer usuarioInt : listaUsuarioPorAssistenteGPS) {
+			System.out.println("__________________");
+			System.out.println(usuarioInt);
+			System.out.println(usuarioDAO.searchByID(usuarioInt).getNome());
+			System.out.println("__________________");
+		}
+
+		List<Avaliacao> listaAvaliacaoPorAssistente =  usuarioDAO.buscarAvalicoesPorAssistente(2);
+		for (Avaliacao avaliacao : listaAvaliacaoPorAssistente) {
+		System.out.println(avaliacao.getDescricao()); 
+		}
 
 
+	}
+
+	private static void banco() {
 
 
 		//INICIO da persistencia de 3 Avaliacoes
 		Calendar c = Calendar.getInstance();
 
 
-		Avaliacao avaliacao1 = new Avaliacao("Muito Bom", c, "Titulo1", 5);
-		Avaliacao avaliacao2 = new Avaliacao("Bom", c, "Titulo2", 3 );
-		Avaliacao avaliacao3 = new Avaliacao("Sem avaliacao", c, "Titulo3", null);
 
-		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
-		avaliacaoDAO.insert(avaliacao1);
-		avaliacaoDAO.insert(avaliacao2);
-		avaliacaoDAO.insert(avaliacao3);
+		
 
 		//FIM da persistencia de 3 Avaliacoes
 
@@ -110,14 +131,7 @@ public class PopulaBanco {
 
 
 		//INICIO da persistencia de 3 ASSISTENTE	
-		List<Avaliacao> listAvaiacao1 = new ArrayList<>();
-		listAvaiacao1.add(avaliacao1);
-
-		List<Avaliacao> listAvaiacao2 = new ArrayList<>();
-		listAvaiacao2.add(avaliacao2);
-
-		List<Avaliacao> listAvaiacao3 = new ArrayList<>();
-		listAvaiacao3.add(avaliacao3);
+		
 
 
 
@@ -162,8 +176,8 @@ public class PopulaBanco {
 
 		
 		Especialidade especialidade4 = new Especialidade("4Especialidade");
-		Especialidade especialidade5 = new Especialidade("5Especialidade");
-		Especialidade especialidade6 = new Especialidade("6Especialidade");
+		Especialidade especialidade5 = new Especialidade("4Especialidade");
+		Especialidade especialidade6 = new Especialidade("4Especialidade");
 		
 		especialidadeDAO.insert(especialidade4);
 		especialidadeDAO.insert(especialidade5);
@@ -172,7 +186,22 @@ public class PopulaBanco {
 
 
 
+
+		Avaliacao avaliacao1 = new Avaliacao(null,"Marravira",c,"Curso de culinária",5);
+		Avaliacao avaliacao2 = new Avaliacao(null,"Era melhor ter visto o filme do Pelé",c,"Carreto",1);
+		Avaliacao avaliacao3 = new Avaliacao(null,"Fatou picar atrás", c, "Corte de Cabelo Gaúcho", 3);
 		
+		Avaliacao avaliacao4 = new Avaliacao(null,"Sem graça",c,"Palhaço",1);
+		Avaliacao avaliacao5 = new Avaliacao(null,"Coitado, programar em uma linguagem retardada e para um sistema retardado é complicado",c,"App IOS",3);
+		Avaliacao avaliacao6 = new Avaliacao(null,"Achei uma merda", c, "Desentupimento de vaso sanitário", 5);
+		
+		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
+		avaliacaoDAO.insert(avaliacao1);
+		avaliacaoDAO.insert(avaliacao2);
+		avaliacaoDAO.insert(avaliacao3);
+		avaliacaoDAO.insert(avaliacao4);
+		avaliacaoDAO.insert(avaliacao5);
+		avaliacaoDAO.insert(avaliacao6);
 		
 		
 		
@@ -180,30 +209,27 @@ public class PopulaBanco {
 		usuario2.setTipoUsuario(TipoUsuario.ASSISTENTE);
 		usuario2.setDiaLogado(true);
 		usuario2.setIdentificacao(identificacao2);
-		usuario2.setListaAvaliacoes(listAvaiacao2);
+		usuario2.getAvaliacao().add(avaliacao1);
+		usuario2.getAvaliacao().add(avaliacao2);
+		usuario2.getAvaliacao().add(avaliacao3);
 		usuario2.getEspecialidade().add(especialidade1);
 		usuario2.getEspecialidade().add(especialidade2);
 		usuario2.getEspecialidade().add(especialidade3);
+		usuario2.getEspecialidade().add(especialidade4);
 		usuarioDAO.update(usuario2);
 
 		usuario3.setTipoUsuario(TipoUsuario.ASSISTENTE);
 		usuario3.setDiaLogado(true);
 		usuario3.setIdentificacao(identificacao3);
-		usuario3.setListaAvaliacoes(listAvaiacao3);
+		usuario3.getAvaliacao().add(avaliacao4);
+		usuario3.getAvaliacao().add(avaliacao5);
+		usuario3.getAvaliacao().add(avaliacao6);
 		usuario3.getEspecialidade().add(especialidade4);
 		usuario3.getEspecialidade().add(especialidade5);
 		usuario3.getEspecialidade().add(especialidade6);
 		usuarioDAO.update(usuario3);
 
-		////////////busca
 		
-		List<Usuario> listaUsuarioPorAssistente =  usuarioDAO.BuscarAssistentePorEspecialidade(4);
-		for (Usuario usuario : listaUsuarioPorAssistente) {
-			System.out.println(usuario.getNome()); 
-		}
-
-
-
 	}
 
 }

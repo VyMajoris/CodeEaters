@@ -65,15 +65,23 @@ public class Usuario {
 	 */
 	public Usuario(String nome, byte[] avatar, TipoUsuario tipoUsuario,
 			boolean diaLogado, Identificacao identificacao,
-			List<Avaliacao> listaAvaliacoes, Set<Especialidade> especialidade) {
+			Set<Avaliacao> avaliacao, Set<Especialidade> especialidade) {
 		super();
 		this.nome = nome;
 		this.avatar = avatar;
 		this.tipoUsuario = tipoUsuario;
 		this.diaLogado = diaLogado;
 		this.identificacao = identificacao;
-		this.listaAvaliacoes = listaAvaliacoes;
+		this.avaliacao = avaliacao;
 		this.especialidade = especialidade;
+	}
+
+
+
+
+
+	public Usuario() {
+		// TODO Auto-generated constructor stub
 	}
 
 
@@ -139,10 +147,13 @@ public class Usuario {
 	@OneToOne
 	private Identificacao identificacao;
 
-	@OneToMany
-	@ElementCollection
+	@ManyToMany(cascade = { CascadeType.ALL })  
+	@JoinTable(name = "USUARIO_AVALIACAO", 
+	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
+	inverseJoinColumns = { @JoinColumn(name = "AVALIACAO_ID") })  
 	@Column(name="AVALIACAO")
-	private List<Avaliacao> listaAvaliacoes;
+
+	private Set<Avaliacao> avaliacao = new HashSet<Avaliacao>();  
 
 	@ManyToMany(cascade = { CascadeType.ALL })  
 	@JoinTable(name = "USUARIO_ESPECIALIDADE", 
@@ -217,13 +228,23 @@ public class Usuario {
 		this.identificacao = identificacao;
 	}
 
-	public List<Avaliacao> getListaAvaliacoes() {
-		return listaAvaliacoes;
+
+
+
+
+	public Set<Avaliacao> getAvaliacao() {
+		return avaliacao;
 	}
 
-	public void setListaAvaliacoes(List<Avaliacao> listaAvaliacoes) {
-		this.listaAvaliacoes = listaAvaliacoes;
+
+
+
+
+	public void setAvaliacao(Set<Avaliacao> avaliacao) {
+		this.avaliacao = avaliacao;
 	}
+
+
 
 
 
