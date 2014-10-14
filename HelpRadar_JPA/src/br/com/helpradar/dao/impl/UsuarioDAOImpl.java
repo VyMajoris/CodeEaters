@@ -3,6 +3,9 @@ package br.com.helpradar.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
+
+
 import javax.persistence.TypedQuery;
 
 import br.com.helpradar.dao.UsuarioDAO;

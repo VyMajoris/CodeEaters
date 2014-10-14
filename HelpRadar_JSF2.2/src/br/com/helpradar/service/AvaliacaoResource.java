@@ -1,4 +1,4 @@
-package br.com.helpradar.service;
+/*package br.com.helpradar.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,11 +32,11 @@ public class AvaliacaoResource {
 	UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 	AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 	
-	/**
+	*//**
 	 * @param assistID
 	 * @return
 	 * Retorna as ultimas 10 avaliações do asissistente
-	 */
+	 *//*
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/buscarAvaliacaoPorAssist/{assistID}")
@@ -79,3 +79,4 @@ public class AvaliacaoResource {
 
 
 
+*/

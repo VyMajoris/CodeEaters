@@ -3,6 +3,11 @@ package br.com.helpradar.dao;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+
+
+
+
+
 public class EntityManagerFactorySingleton {
 
 	private static EntityManagerFactory factory;
@@ -13,7 +18,8 @@ public class EntityManagerFactorySingleton {
 	
 	public static EntityManagerFactory getInstance(){
 		if (factory == null){
-			factory = Persistence.createEntityManagerFactory("CLIENTE_ORACLE");
+			EntityManagerFactory persistence = Persistence.createEntityManagerFactory("CLIENTE_ORACLE");
+			factory = persistence;
 		}
 		return factory;
 	}

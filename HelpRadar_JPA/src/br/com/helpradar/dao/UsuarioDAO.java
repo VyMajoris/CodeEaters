@@ -26,4 +26,5 @@ public interface UsuarioDAO extends DAO<Usuario,Integer>{
 	 */
 	List<Integer> BuscarAssistentePorEspecialidadeGPS(String espNome);
 
+	
 }

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+
+
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,70 +19,55 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
-import br.com.helpradar.dao.AvaliacaoDAO;
 import br.com.helpradar.dao.IdentificacaoDAO;
 import br.com.helpradar.dao.UsuarioDAO;
-import br.com.helpradar.dao.impl.AvaliacaoDAOImpl;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
-import br.com.helpradar.entity.Avaliacao;
+import br.com.helpradar.daomessenger.DaoMessenger;
 import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.Usuario;
 
 import com.google.gson.Gson;
 
-/**
- * @author VyMajoris
- *
- */
+
 @Path("/assistente")
 public class AssistenteResource {
 
-	
-	EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-	UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
-	IdentificacaoDAO identificacaoDAO = new IdentificacaoDAOImpl(em);
-	
-	
-	
-	/**
-	 * Use esse método para mostrar assistentes no mapa<a href="www.google.com">SAGE </a>
-	 * @param espID
-	 * @return
-	 *  
-	 */
+
+
+	DaoMessenger daom = new DaoMessenger();
+
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/buscarAssistentePorEspGPS/{espNome}")
-	
+
 	public String getAssistentesGPS(@PathParam("espNome") String espNome){
-		
-		
+
 		Map<String,List<Usuario>> mapa = 
 				new HashMap<String, List<Usuario>>();
-		
-		List<Integer> lista= usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
+		List<Integer> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
 		List<Usuario> listaAssistenteGPS = new ArrayList<Usuario>();
-		
+
 		for (Integer usuarioID : lista) {
 			Usuario assistente = new Usuario();
 			assistente.setId(usuarioID);
-			
+
 			listaAssistenteGPS.add(assistente);
 		}
-		
-	
-
 		System.out.println("quantidade de assistentes achados: " + lista.size());
 		//Utilizar a biblioteca do google para transformar
 		//o objeto java em sua representação JSON
 		return new Gson().toJson(mapa);
 	}
-
 	
 
 	
-	
+
+
+
+
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/atualizarIdentificacao")
@@ -88,12 +76,13 @@ public class AssistenteResource {
 		Identificacao identificacao = 
 				new Gson().fromJson(identificacaoJSON, Identificacao.class);
 		//Cadastrar atraves do BO
-		
-		identificacaoDAO.update(identificacao);
-		
+
+		daom.updateIdentificacao(identificacao);
+
 		return Response.status(201)
-						.entity("identificacao (identificacao.update) atualizada").build();
+				.entity("identificacao (identificacao.update) atualizada").build();
 	}
+
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -103,15 +92,15 @@ public class AssistenteResource {
 		Usuario assistente = 
 				new Gson().fromJson(AssistenteJSON, Usuario.class);
 		//Cadastrar atraves do BO
-		
-		usuarioDAO.update(assistente);
-		
+
+		daom.cadastrarAssistente(assistente);
+
 		return Response.status(201)
-						.entity("Assistente (avaliacaoDAO.update) Cadastrado").build();
+				.entity("Assistente (avaliacaoDAO.update) Cadastrado").build();
 	}
-	
-	
-	
+
+
+
 }
 
 

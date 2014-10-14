@@ -15,6 +15,9 @@ import javax.persistence.EntityManager;
 
 
 
+
+
+
 import br.com.helpradar.dao.AvaliacaoDAO;
 import br.com.helpradar.dao.ContatoDAO;
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
@@ -26,6 +29,9 @@ import br.com.helpradar.dao.impl.ContatoDAOImpl;
 import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
+
+import br.com.helpradar.daomessenger.DaoMessenger;
+import br.com.helpradar.daomessenger.DaoMessenger;
 import br.com.helpradar.entity.Avaliacao;
 import br.com.helpradar.entity.Contato;
 import br.com.helpradar.entity.Especialidade;
@@ -38,16 +44,19 @@ public class PopulaBanco {
 	static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	public static void main(String[] args) {
 		
-		//banco();
-
+		banco();
+		
+		
+		
 		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
 		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 		ContatoDAO contatoDAO = new ContatoDAOImpl(em);
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 		
+		DaoMessenger daoMessenger = new DaoMessenger();
 	
 		
-		List<Integer> listaUsuarioPorAssistenteGPS =  usuarioDAO.BuscarAssistentePorEspecialidadeGPS("e");
+		List<Integer> listaUsuarioPorAssistenteGPS =  daoMessenger.BuscarAssistentePorEspecialidadeGPS("e");
 		for (Integer usuarioInt : listaUsuarioPorAssistenteGPS) {
 			System.out.println("__________________");
 			System.out.println(usuarioInt);
@@ -57,7 +66,7 @@ public class PopulaBanco {
 
 		List<Avaliacao> listaAvaliacaoPorAssistente =  usuarioDAO.buscarAvalicoesPorAssistente(2);
 		for (Avaliacao avaliacao : listaAvaliacaoPorAssistente) {
-		System.out.println(avaliacao.getDescricao()); 
+		//System.out.println(avaliacao.getDescricao()); 
 		}
 
 
@@ -141,13 +150,19 @@ public class PopulaBanco {
 		//INICIO da persistencia de 3 Identificacao	
 		List<String> listPecas1 = new ArrayList<>();
 		listPecas1.add("ListaDePecas1?");
-
+		listPecas1.add("ListaDePecas1?");
+		listPecas1.add("ListaDePecas1?");
 		List<String> listPecas2 = new ArrayList<>();
+		listPecas2.add("ListaDePecas2?");
+		listPecas2.add("ListaDePecas2?");
 		listPecas2.add("ListaDePecas2?");
 
 		List<String> listPecas3 = new ArrayList<>();
 		listPecas3.add("ListaDePecas3?");
-
+		listPecas3.add("ListaDePecas3?");
+		listPecas3.add("ListaDePecas3?");
+		
+		
 		Identificacao identificacao1 = new Identificacao( listPecas1);
 		Identificacao identificacao2 = new Identificacao( listPecas2);
 		Identificacao identificacao3 = new Identificacao( listPecas3);
