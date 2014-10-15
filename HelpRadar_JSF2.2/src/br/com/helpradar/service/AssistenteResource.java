@@ -52,7 +52,7 @@ public class AssistenteResource {
 
 		for (Long usuarioID : lista) {
 			Usuario assistente = new Usuario();
-			assistente.setId(usuarioID);
+			assistente.setuserId(usuarioID);
 
 			listaAssistenteGPS.add(assistente);
 		}

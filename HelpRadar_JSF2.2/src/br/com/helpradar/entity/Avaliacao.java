@@ -1,5 +1,6 @@
 package br.com.helpradar.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,7 +15,16 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name="seqAvaliacao", sequenceName="SEQ_AVALIACAO", allocationSize=1)
-public class Avaliacao {
+public class Avaliacao implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2061837056040184155L;
+
+
+
+
 
 	/**
 	 * @param usuario

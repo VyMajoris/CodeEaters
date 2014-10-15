@@ -1,5 +1,6 @@
 package br.com.helpradar.entity;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,12 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name="seqEspecialidade", sequenceName="SEQ_ESPECIALIDADE", allocationSize=1)
-public class Especialidade {
+public class Especialidade implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6446425962702391531L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqEspecialidade")

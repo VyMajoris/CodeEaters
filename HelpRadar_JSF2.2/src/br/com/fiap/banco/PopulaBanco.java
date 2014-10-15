@@ -44,13 +44,13 @@ public class PopulaBanco {
 	static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	public static void main(String[] args) {
 		
-		//banco();
-		
+		banco();
+		/*
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 		String id = "3";
 		Usuario usuario = usuarioDAO.searchByIDLong(Long.parseLong(id));
 		System.out.println(usuario.getNome());
-		/*List<Long> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("OPERADOR");
+		List<Long> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("OPERADOR");
 		for (Long integer : lista) {
 			System.out.println("aa");
 			System.out.println(integer);
@@ -130,15 +130,13 @@ public class PopulaBanco {
 
 
 		//INSERE 3 USURIOS DEFAULT
-		Usuario usuario1 = new Usuario(1L, "Pedro Henrique", false, null, contato1, TipoUsuario.DEFAULT);
-		List<Usuario> listAmg2 = new ArrayList<>();
-		listAmg2.add(usuario1);
+		Usuario usuario1 = new Usuario(1L, "Pedro Henrique", contato1, TipoUsuario.DEFAULT);
+		
 
-		Usuario usuario2 = new Usuario(2L, "Felipe Jose", false, listAmg2, contato2, TipoUsuario.DEFAULT);
-		List<Usuario> listAmg3 = new ArrayList<>();
-		listAmg3.add(usuario2);
+		Usuario usuario2 = new Usuario(2L, "Felipe Jose",  contato2, TipoUsuario.DEFAULT);
+		
 
-		Usuario usuario3 = new Usuario(3L, "Eduardo",false, listAmg3, contato3, TipoUsuario.DEFAULT);
+		Usuario usuario3 = new Usuario(3L, "Eduardo",  contato3, TipoUsuario.DEFAULT);
 
 
 
@@ -235,7 +233,7 @@ public class PopulaBanco {
 		
 		
 		usuario2.setTipoUsuario(TipoUsuario.ASSISTENTE);
-		usuario2.setDiaLogado(true);
+		
 		usuario2.setIdentificacao(identificacao2);
 		usuario2.getAvaliacao().add(avaliacao1);
 		usuario2.getAvaliacao().add(avaliacao2);
@@ -247,7 +245,7 @@ public class PopulaBanco {
 		usuarioDAO.update(usuario2);
 
 		usuario3.setTipoUsuario(TipoUsuario.ASSISTENTE);
-		usuario3.setDiaLogado(true);
+		
 		usuario3.setIdentificacao(identificacao3);
 		usuario3.getAvaliacao().add(avaliacao4);
 		usuario3.getAvaliacao().add(avaliacao5);
