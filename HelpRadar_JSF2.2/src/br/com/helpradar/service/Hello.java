@@ -45,8 +45,8 @@ public class Hello {
 
 
 
-		List<Integer> listaUsuarioPorAssistenteGPS = daom.BuscarAssistentePorEspecialidadeGPS(nome);
-		Map<String,List<Integer>> mapa = new HashMap<>();
+		List<Long> listaUsuarioPorAssistenteGPS = daom.BuscarAssistentePorEspecialidadeGPS(nome);
+		Map<String,List<Long>> mapa = new HashMap<>();
 
 		mapa.put("especialidades", listaUsuarioPorAssistenteGPS);
 		for (int i = 0; i < listaUsuarioPorAssistenteGPS.size(); i++) {

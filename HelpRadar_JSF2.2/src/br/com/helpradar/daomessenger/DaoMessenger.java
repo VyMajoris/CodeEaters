@@ -1,10 +1,12 @@
 package br.com.helpradar.daomessenger;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 
+import sun.security.util.BigInt;
 import br.com.helpradar.dao.AvaliacaoDAO;
 import br.com.helpradar.dao.ContatoDAO;
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
@@ -33,18 +35,19 @@ public class DaoMessenger {
 
 
 
-	public   List<Integer> BuscarAssistentePorEspecialidadeGPS(String espNome){
+	public   List<Long> BuscarAssistentePorEspecialidadeGPS(String espNome){
 		System.out.println("testeee");
-		List<Integer> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
+		List<Long> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
 		for (int i = 0; i < lista.size(); i++) {
 			System.out.println(lista.get(i).toString());
 		}
 		return lista;
 
 	}
+	
 
-	public  Usuario searchById(Integer userId){
-		return usuarioDAO.searchByID(userId);
+	public Usuario searchUserByIdLong(Long  userId){
+		return usuarioDAO.searchByIDLong(userId);
 	}
 	
 	public void insertUsuario(Usuario usuario){

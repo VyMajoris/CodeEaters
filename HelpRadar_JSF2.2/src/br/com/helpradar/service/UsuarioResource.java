@@ -1,9 +1,12 @@
 package br.com.helpradar.service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
 
 
 
@@ -61,23 +64,16 @@ public class UsuarioResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/verificarUsuario/{userId}")
 
-	public String getAssistentesGPS(@PathParam("userId") String userId){
+	public String verificarUsuario(@PathParam("userId") String userId){
 
-		Map<String,List<Usuario>> mapa = 
-				new HashMap<String, List<Usuario>>();
-		List<Integer> lista = daom.BuscarAssistentePorEspecialidadeGPS(userId);
-		List<Usuario> listaAssistenteGPS = new ArrayList<Usuario>();
-
-		for (Integer usuarioID : lista) {
-			Usuario assistente = new Usuario();
-			assistente.setId(usuarioID);
-
-			listaAssistenteGPS.add(assistente);
-		}
-		System.out.println("quantidade de assistentes achados: " + lista.size());
+	
+		Usuario usuario = daom.searchUserByIdLong(Long.parseLong(userId));
+		
+	
+	
 		//Utilizar a biblioteca do google para transformar
 		//o objeto java em sua representação JSON
-		return new Gson().toJson(mapa);
+		return new Gson().toJson(usuario);
 	}
 
 	

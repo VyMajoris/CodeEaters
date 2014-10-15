@@ -47,13 +47,17 @@ public class PopulaBanco {
 		//banco();
 		
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
-		List<Integer> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("OPERADOR");
-		for (Integer integer : lista) {
+		String id = "3";
+		Usuario usuario = usuarioDAO.searchByIDLong(Long.parseLong(id));
+		System.out.println(usuario.getNome());
+		/*List<Long> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("OPERADOR");
+		for (Long integer : lista) {
 			System.out.println("aa");
 			System.out.println(integer);
 		}
 		
-	/*	
+		
+		
 		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
 		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 		ContatoDAO contatoDAO = new ContatoDAOImpl(em);
@@ -87,7 +91,7 @@ public class PopulaBanco {
 		Calendar c = Calendar.getInstance();
 
 
-
+		
 		
 
 		//FIM da persistencia de 3 Avaliacoes
@@ -111,6 +115,7 @@ public class PopulaBanco {
 		List<String> listEmail3 = new ArrayList<>();
 		listEmail.add("emailUser3@gmail.com");
 
+		
 
 		Contato contato1 = new Contato("Email1", "123456789", null, true);
 		Contato contato2 = new Contato("Email2", "223456789", null, true);
@@ -125,15 +130,15 @@ public class PopulaBanco {
 
 
 		//INSERE 3 USURIOS DEFAULT
-		Usuario usuario1 = new Usuario(1, "Pedro Henrique", false, null, contato1, TipoUsuario.DEFAULT);
+		Usuario usuario1 = new Usuario(1L, "Pedro Henrique", false, null, contato1, TipoUsuario.DEFAULT);
 		List<Usuario> listAmg2 = new ArrayList<>();
 		listAmg2.add(usuario1);
 
-		Usuario usuario2 = new Usuario(2, "Felipe Jose", false, listAmg2, contato2, TipoUsuario.DEFAULT);
+		Usuario usuario2 = new Usuario(2L, "Felipe Jose", false, listAmg2, contato2, TipoUsuario.DEFAULT);
 		List<Usuario> listAmg3 = new ArrayList<>();
 		listAmg3.add(usuario2);
 
-		Usuario usuario3 = new Usuario(3, "Eduardo",false, listAmg3, contato3, TipoUsuario.DEFAULT);
+		Usuario usuario3 = new Usuario(3L, "Eduardo",false, listAmg3, contato3, TipoUsuario.DEFAULT);
 
 
 

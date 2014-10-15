@@ -8,6 +8,7 @@ import java.util.Map;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -46,10 +47,10 @@ public class AssistenteResource {
 
 		Map<String,List<Usuario>> mapa = 
 				new HashMap<String, List<Usuario>>();
-		List<Integer> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
+		List<Long> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
 		List<Usuario> listaAssistenteGPS = new ArrayList<Usuario>();
 
-		for (Integer usuarioID : lista) {
+		for (Long usuarioID : lista) {
 			Usuario assistente = new Usuario();
 			assistente.setId(usuarioID);
 

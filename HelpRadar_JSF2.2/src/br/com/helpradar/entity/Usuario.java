@@ -36,7 +36,7 @@ public class Usuario {
 	 * @param tipoUsuario
 	 * @param avatar
 	 */
-	public Usuario(int id, String nome, boolean social,
+	public Usuario(Long id, String nome, boolean social,
 			List<Usuario> listaAmigos, Contato contato,
 			TipoUsuario tipoUsuario) {
 		super();
@@ -103,7 +103,7 @@ public class Usuario {
 
 	//O ID será provido pelo API de login
 	@Id
-	private int id;
+	private Long id;
 
 	//Nome será provida pela API de login, mas poderá ser mudado
 	@Column(nullable=false)
@@ -164,11 +164,11 @@ public class Usuario {
 	private Set<Especialidade> especialidade = new HashSet<Especialidade>();  
 	/////////ASSISTENTE
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
