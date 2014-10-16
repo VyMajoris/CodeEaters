@@ -32,18 +32,62 @@ public class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1501771317477082613L;
 
+	/**
+	 * 
+	 */
+	public Usuario() {
+		super();
+	}
+
+
+
+
+
 	//O ID será provido pelo API de login
 	@Id
 	private Long userId;
+
+	private String email;
+
+	//failsafe em caso de algum tipo de caractere for inserido além de numeros
+	private String telefone;
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+
+
+
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+
+
+
 
 	//Nome será provida pela API de login, mas poderá ser mudado
 	@Column(nullable=false)
 	private String nome;
 
-
-
-	@OneToOne
-	private Contato contato;
 
 	private TipoUsuario tipoUsuario;
 
@@ -57,7 +101,7 @@ public class Usuario implements Serializable {
 	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
 	inverseJoinColumns = { @JoinColumn(name = "AVALIACAO_ID") })  
 	@Column(name="AVALIACAO")
-	
+
 	private Set<Avaliacao> avaliacao = new HashSet<Avaliacao>();
 
 	@ManyToMany(cascade = { CascadeType.ALL })  
@@ -65,7 +109,7 @@ public class Usuario implements Serializable {
 	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
 	inverseJoinColumns = { @JoinColumn(name = "ESPECIALIDADE_ID") })  
 	@Column(name="ESPECIALIDADE")
-	
+
 	private Set<Especialidade> especialidade = new HashSet<Especialidade>();
 
 
@@ -80,18 +124,19 @@ public class Usuario implements Serializable {
 	 * @param tipoUsuario
 	 * @param avatar
 	 */
-	public Usuario(Long id, String nome, 
-			Contato contato,
-			TipoUsuario tipoUsuario) {
+	public Usuario(Long id, String nome, TipoUsuario tipoUsuario, String telefone, String email) {
 		super();
 		this.userId = id;
 		this.nome = nome;
-		
+		this.telefone = telefone;
+		this.email = email;
 
-		this.contato = contato;
 		this.tipoUsuario = tipoUsuario;
 
 	}
+
+
+
 
 
 
@@ -108,13 +153,14 @@ public class Usuario implements Serializable {
 	 * @param especialidade
 	 */
 	public Usuario(String nome,  TipoUsuario tipoUsuario,
-			 Identificacao identificacao,
-			Set<Avaliacao> avaliacao, Set<Especialidade> especialidade) {
+			Identificacao identificacao,
+			Set<Avaliacao> avaliacao, Set<Especialidade> especialidade, String telefone, String email) {
 		super();
 		this.nome = nome;
-		
+
 		this.tipoUsuario = tipoUsuario;
-		
+		this.telefone = telefone;
+		this.email = email;
 		this.identificacao = identificacao;
 		this.avaliacao = avaliacao;
 		this.especialidade = especialidade;
@@ -123,10 +169,6 @@ public class Usuario implements Serializable {
 
 
 
-
-	public Usuario() {
-		// TODO Auto-generated constructor stub
-	}
 
 
 
@@ -145,7 +187,7 @@ public class Usuario implements Serializable {
 
 
 
-	
+
 
 
 	public Long getUserId() {
@@ -167,13 +209,6 @@ public class Usuario implements Serializable {
 
 
 
-	public Contato getContato() {
-		return contato;
-	}
-
-	public void setContato(Contato contato) {
-		this.contato = contato;
-	}
 
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;

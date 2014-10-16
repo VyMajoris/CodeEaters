@@ -18,22 +18,21 @@ import javax.persistence.EntityManager;
 
 
 
+
 import br.com.helpradar.dao.AvaliacaoDAO;
-import br.com.helpradar.dao.ContatoDAO;
+
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
 import br.com.helpradar.dao.EspecialidadeDAO;
 import br.com.helpradar.dao.IdentificacaoDAO;
 import br.com.helpradar.dao.UsuarioDAO;
 import br.com.helpradar.dao.impl.AvaliacaoDAOImpl;
-import br.com.helpradar.dao.impl.ContatoDAOImpl;
+
 import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
 
-import br.com.helpradar.daomessenger.DaoMessenger;
-import br.com.helpradar.daomessenger.DaoMessenger;
 import br.com.helpradar.entity.Avaliacao;
-import br.com.helpradar.entity.Contato;
+
 import br.com.helpradar.entity.Especialidade;
 import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.TipoUsuario;
@@ -117,26 +116,20 @@ public class PopulaBanco {
 
 		
 
-		Contato contato1 = new Contato("Email1", "123456789", null, true);
-		Contato contato2 = new Contato("Email2", "223456789", null, true);
-		Contato contato3 = new Contato("Email3", "323456789", null, true);
-
-		ContatoDAO contatoDAO = new ContatoDAOImpl(em);
-		contatoDAO.insert(contato1);
-		contatoDAO.insert(contato2);
-		contatoDAO.insert(contato3);
+		
 
 		//FIM da persistencia de 3 Contato
 
 
 		//INSERE 3 USURIOS DEFAULT
-		Usuario usuario1 = new Usuario(1L, "Pedro Henrique", contato1, TipoUsuario.DEFAULT);
+		Usuario usuario1 = new Usuario(1L, "Pedro Henrique", TipoUsuario.DEFAULT, "1234567890", "emailPedro@email.com");
 		
 
-		Usuario usuario2 = new Usuario(2L, "Felipe Jose",  contato2, TipoUsuario.DEFAULT);
+		Usuario usuario2 = new Usuario(2L, "Felipe Jose", TipoUsuario.DEFAULT, "2234567890", "emailFelipe@email.com");
 		
 
-		Usuario usuario3 = new Usuario(3L, "Eduardo",  contato3, TipoUsuario.DEFAULT);
+		Usuario usuario3 = new  Usuario(3L, "Felipe Jose", TipoUsuario.DEFAULT, "3234567890", "emailEduardo@email.com");
+		
 
 
 

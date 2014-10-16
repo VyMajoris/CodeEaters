@@ -8,13 +8,13 @@ import javax.persistence.EntityManager;
 
 import sun.security.util.BigInt;
 import br.com.helpradar.dao.AvaliacaoDAO;
-import br.com.helpradar.dao.ContatoDAO;
+
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
 import br.com.helpradar.dao.EspecialidadeDAO;
 import br.com.helpradar.dao.IdentificacaoDAO;
 import br.com.helpradar.dao.UsuarioDAO;
 import br.com.helpradar.dao.impl.AvaliacaoDAOImpl;
-import br.com.helpradar.dao.impl.ContatoDAOImpl;
+
 import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
@@ -28,7 +28,7 @@ public class DaoMessenger {
 	EspecialidadeDAO especialidadeDAO = new EspecialidadeDAOImpl(em);
 	AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 	IdentificacaoDAO identificacaoDAO = new IdentificacaoDAOImpl(em);
-	ContatoDAO contatoDAO = new ContatoDAOImpl(em);
+
 	UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 
 
