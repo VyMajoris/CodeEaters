@@ -18,7 +18,7 @@ public interface UsuarioDAO extends DAO<Usuario,Integer>{
 
 	List<Usuario> BuscarAssistentePorEspecialidade(int espID);
 	
-	List<Usuario> BuscarAssistentePorNomeEspecialidade(int espID);
+	List<Usuario> BuscarAssistentePorNomeEspecialidade(String espID);
 
 	/**
 	 * @param espID

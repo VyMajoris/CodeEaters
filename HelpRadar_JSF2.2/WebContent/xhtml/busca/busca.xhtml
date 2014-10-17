@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">
+	    Help Radar
+	</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet name="layouts/side-menu.css" library="css" />
+	
+	
+    <title>Side Menu &amp;ndash; Layout Examples &amp;ndash; Pure</title>
+
+    
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">HelpRadar</a>
+
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>Busca</h1>
+            <h2>Confira aqui os usuários cadastrados e suas especialidades</h2>
+        </div>
+
+        <div class="content">
+           
+            <p>
+                Entre com a especialidade que deseja pesquisar.
+            </p>
+            
+            <div class="content">
+            <h:form>
+			   <p:outputLabel for="esp" value="especialidade"/>
+			   <p:inputText id="esp" value="#{BuscaCLiente.}"/>
+			   
+			   <p:commandButton value="Buscar" actionListener="#{BuscaCliente.buscarNomes}" update=":tabela"/>
+			   
+			   <p:dataTable value="#{buscaClienteBean.listaEspecialidade}" var="user" id="tabela">
+			   		<p:column headerText="Nome Assistente">
+						<h:outputText value="#{user.nome}" />
+					</p:column>
+			   </p:dataTable>
+
+			</h:form>
+            </div>
+			
+            <div class="content">
+            	<p>
+            		
+            	</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="js/ui.js"></script>
+
+
+	</ui:define>
+</ui:composition>
+</html>
+
