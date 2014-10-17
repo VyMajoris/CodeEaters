@@ -17,6 +17,8 @@ public interface UsuarioDAO extends DAO<Usuario,Integer>{
 	Identificacao buscarIdentificacaoPorAssistente(int assistId);
 
 	List<Usuario> BuscarAssistentePorEspecialidade(int espID);
+	
+	List<Usuario> BuscarAssistentePorNomeEspecialidade(int espID);
 
 	/**
 	 * @param espID

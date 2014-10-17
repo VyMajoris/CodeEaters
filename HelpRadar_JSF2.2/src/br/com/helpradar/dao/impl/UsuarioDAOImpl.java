@@ -61,6 +61,14 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 
 	
 	
+	@Override
+	public List<Usuario> BuscarAssistentePorNomeEspecialidade(int espNome) {
+		TypedQuery<Usuario> query = em.createQuery("select u  from Usuario u join u.especialidade e where e.nomeEspecialidade like :espNome ",Usuario.class);
+		query.setParameter("espNome", "%"+espNome+"%");
+		
+		return query.getResultList();
+	}
+
 	
 	
 	
@@ -72,6 +80,9 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 		
 		return em.find(Usuario.class, userId);
 	}
+
+
+
 
 	
 	
