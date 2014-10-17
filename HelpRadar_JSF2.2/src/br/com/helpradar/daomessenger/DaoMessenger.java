@@ -35,13 +35,13 @@ public class DaoMessenger {
 
 
 
-	public   List<Long> BuscarAssistentePorEspecialidadeGPS(String espNome){
+	public   List<Usuario> BuscarAssistentePorEspecialidadeGPS(String espNome){
 		System.out.println("testeee");
-		List<Long> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
-		for (int i = 0; i < lista.size(); i++) {
-			System.out.println(lista.get(i).toString());
+		List<Usuario> listaUsuarioGPS = usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
+		for (int i = 0; i < listaUsuarioGPS.size(); i++) {
+			System.out.println(listaUsuarioGPS.get(i).toString());
 		}
-		return lista;
+		return listaUsuarioGPS;
 
 	}
 	

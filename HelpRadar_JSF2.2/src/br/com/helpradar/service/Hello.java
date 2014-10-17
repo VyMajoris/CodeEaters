@@ -22,6 +22,7 @@ import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
 import br.com.helpradar.daomessenger.DaoMessenger;
 import br.com.helpradar.daomessenger.DaoMessenger;
 import br.com.helpradar.entity.Especialidade;
+import br.com.helpradar.entity.Usuario;
 
 @Path("/hello")
 public class Hello {
@@ -45,8 +46,8 @@ public class Hello {
 
 
 
-		List<Long> listaUsuarioPorAssistenteGPS = daom.BuscarAssistentePorEspecialidadeGPS(nome);
-		Map<String,List<Long>> mapa = new HashMap<>();
+		List<Usuario> listaUsuarioPorAssistenteGPS = daom.BuscarAssistentePorEspecialidadeGPS(nome);
+		Map<String,List<Usuario>> mapa = new HashMap<>();
 
 		mapa.put("especialidades", listaUsuarioPorAssistenteGPS);
 		for (int i = 0; i < listaUsuarioPorAssistenteGPS.size(); i++) {

@@ -47,15 +47,9 @@ public class AssistenteResource {
 
 		Map<String,List<Usuario>> mapa = 
 				new HashMap<String, List<Usuario>>();
-		List<Long> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
-		List<Usuario> listaAssistenteGPS = new ArrayList<Usuario>();
-
-		for (Long usuarioID : lista) {
-			Usuario assistente = new Usuario();
-			assistente.setuserId(usuarioID);
-
-			listaAssistenteGPS.add(assistente);
-		}
+		List<Usuario> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
+		
+		
 		System.out.println("quantidade de assistentes achados: " + lista.size());
 		//Utilizar a biblioteca do google para transformar
 		//o objeto java em sua representação JSON

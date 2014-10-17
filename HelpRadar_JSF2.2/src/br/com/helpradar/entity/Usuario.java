@@ -38,11 +38,32 @@ public class Usuario implements Serializable {
 	public Usuario() {
 		super();
 	}
+	
+	
+
+	
+	/**
+	 * @param latitude
+	 * @param longitude
+	 * @param userId
+	 */
+	public Usuario(Long userId, String latitude, String longitude ) {
+		super();
+		this.userId = userId;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		
+	}
 
 
 
 
+	//string para facilitar na conversão entre o server/app/rest/map
+	private String latitude;
+	private String longitude;
 
+	private boolean isBroadcastingGPS;
+	
 	//O ID será provido pelo API de login
 	@Id
 	private Long userId;
@@ -51,6 +72,31 @@ public class Usuario implements Serializable {
 
 	//failsafe em caso de algum tipo de caractere for inserido além de numeros
 	private String telefone;
+
+	//Nome será provida pela API de login, mas poderá ser mudado
+	@Column(nullable=false)
+	private String nome;
+
+	private TipoUsuario tipoUsuario;
+
+	@OneToOne
+	private Identificacao identificacao;
+
+	@ManyToMany(cascade = { CascadeType.ALL })  
+	@JoinTable(name = "USUARIO_AVALIACAO", 
+	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
+	inverseJoinColumns = { @JoinColumn(name = "AVALIACAO_ID") })  
+	@Column(name="AVALIACAO")
+	
+	private Set<Avaliacao> avaliacao = new HashSet<Avaliacao>();
+
+	@ManyToMany(cascade = { CascadeType.ALL })  
+	@JoinTable(name = "USUARIO_ESPECIALIDADE", 
+	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
+	inverseJoinColumns = { @JoinColumn(name = "ESPECIALIDADE_ID") })  
+	@Column(name="ESPECIALIDADE")
+	
+	private Set<Especialidade> especialidade = new HashSet<Especialidade>();
 
 	public String getEmail() {
 		return email;
@@ -81,36 +127,6 @@ public class Usuario implements Serializable {
 	}
 
 
-
-
-
-	//Nome será provida pela API de login, mas poderá ser mudado
-	@Column(nullable=false)
-	private String nome;
-
-
-	private TipoUsuario tipoUsuario;
-
-
-
-	@OneToOne
-	private Identificacao identificacao;
-
-	@ManyToMany(cascade = { CascadeType.ALL })  
-	@JoinTable(name = "USUARIO_AVALIACAO", 
-	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
-	inverseJoinColumns = { @JoinColumn(name = "AVALIACAO_ID") })  
-	@Column(name="AVALIACAO")
-
-	private Set<Avaliacao> avaliacao = new HashSet<Avaliacao>();
-
-	@ManyToMany(cascade = { CascadeType.ALL })  
-	@JoinTable(name = "USUARIO_ESPECIALIDADE", 
-	joinColumns = { @JoinColumn(name = "USUARIO_ID") },
-	inverseJoinColumns = { @JoinColumn(name = "ESPECIALIDADE_ID") })  
-	@Column(name="ESPECIALIDADE")
-
-	private Set<Especialidade> especialidade = new HashSet<Especialidade>();
 
 
 
@@ -242,6 +258,54 @@ public class Usuario implements Serializable {
 
 	public void setAvaliacao(Set<Avaliacao> avaliacao) {
 		this.avaliacao = avaliacao;
+	}
+
+
+
+
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+
+
+
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+
+
+
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+
+
+
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+
+
+
+
+	public boolean isBroadcastingGPS() {
+		return isBroadcastingGPS;
+	}
+
+
+
+
+
+	public void setBroadcastingGPS(boolean isBroadcastingGPS) {
+		this.isBroadcastingGPS = isBroadcastingGPS;
 	}
 
 

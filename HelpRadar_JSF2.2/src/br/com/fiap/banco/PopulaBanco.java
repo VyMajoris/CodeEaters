@@ -130,6 +130,30 @@ public class PopulaBanco {
 
 		Usuario usuario3 = new  Usuario(3L, "Felipe Jose", TipoUsuario.DEFAULT, "3234567890", "emailEduardo@email.com");
 		
+		
+		//Esses estão fazendo broadcast
+		Usuario usuario4 = new Usuario(4L, "BroadCast 3", TipoUsuario.ASSISTENTE, "4234567890", "4444444444@email.com");
+		usuario4.setBroadcastingGPS(true);
+		usuario4.setLatitude("32.673386");
+		usuario4.setLongitude("-117.042487");
+		
+		
+
+		
+		Usuario usuario5 = new Usuario(5L, "BroadCast 4", TipoUsuario.ASSISTENTE, "5234567890", "555555555@email.com");
+		usuario5.setBroadcastingGPS(true);
+		usuario5.setLatitude("26.053595");
+		usuario5.setLongitude("-97.354986");
+		
+
+		Usuario usuario6 = new  Usuario(6L, "BroadCast 6", TipoUsuario.ASSISTENTE, "6234567890", "55555555555@email.com");
+		usuario6.setBroadcastingGPS(true);
+		usuario6.setLatitude("31.481867");
+		usuario6.setLongitude("-106.451666");
+		
+	
+
+
 
 
 
@@ -137,21 +161,16 @@ public class PopulaBanco {
 		usuarioDAO.insert(usuario1);
 		usuarioDAO.insert(usuario2);
 		usuarioDAO.insert(usuario3);
-		//FIM  3 USURIOS DEFAULT
-
-
-
-
-
-		//INICIO da persistencia de 3 ASSISTENTE	
 		
 
 
+		usuarioDAO.insert(usuario4);
+		usuarioDAO.insert(usuario5);
+		usuarioDAO.insert(usuario6);
 
 
-		//FIM da persistencia de 3 ASSISTENTE
 
-		//INICIO da persistencia de 3 Identificacao	
+
 		List<String> listPecas1 = new ArrayList<>();
 		listPecas1.add("ListaDePecasa1");
 		listPecas1.add("ListaDePecasb1");
@@ -198,9 +217,19 @@ public class PopulaBanco {
 		Especialidade especialidade5 = new Especialidade("5Especialidade");
 		Especialidade especialidade6 = new Especialidade("OPERADOR");
 		
+		
+		
 		especialidadeDAO.insert(especialidade4);
 		especialidadeDAO.insert(especialidade5);
 		especialidadeDAO.insert(especialidade6);
+		
+		Especialidade especialidade7 = new Especialidade("1Broadcast");
+		Especialidade especialidade8 = new Especialidade("2Broadcast");
+		Especialidade especialidade9 = new Especialidade("3Broadcast");
+		
+		especialidadeDAO.insert(especialidade7);
+		especialidadeDAO.insert(especialidade8);
+		especialidadeDAO.insert(especialidade9);
 				
 
 
@@ -247,7 +276,15 @@ public class PopulaBanco {
 		usuario3.getEspecialidade().add(especialidade5);
 		usuario3.getEspecialidade().add(especialidade6);
 		usuarioDAO.update(usuario3);
-
+		
+		usuario4.getEspecialidade().add(especialidade7);
+		usuario5.getEspecialidade().add(especialidade8);
+		usuario6.getEspecialidade().add(especialidade9);
+		usuarioDAO.update(usuario4);
+		usuarioDAO.update(usuario5);
+		usuarioDAO.update(usuario6);
+		
+		
 		
 	}
 
