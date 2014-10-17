@@ -19,20 +19,19 @@ import javax.persistence.EntityManager;
 
 
 
-import br.com.helpradar.dao.AvaliacaoDAO;
 
+
+
+import br.com.helpradar.dao.AvaliacaoDAO;
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
 import br.com.helpradar.dao.EspecialidadeDAO;
 import br.com.helpradar.dao.IdentificacaoDAO;
 import br.com.helpradar.dao.UsuarioDAO;
 import br.com.helpradar.dao.impl.AvaliacaoDAOImpl;
-
 import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
-
 import br.com.helpradar.entity.Avaliacao;
-
 import br.com.helpradar.entity.Especialidade;
 import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.TipoUsuario;
@@ -43,9 +42,28 @@ public class PopulaBanco {
 	static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	public static void main(String[] args) {
 		
-		banco();
-		/*
+		//banco();
+		
+		
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
+		List<Object[]> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("a");
+		for(Object[] usuario: lista){
+	         Long id = (Long)usuario[0];
+	         String lat = (String)usuario[1];
+	         String longi = (String)usuario[2];
+	         
+	         System.out.println("ID> "+ id + " LAT > " + lat+ " LONG > "+longi );
+	      
+	     }
+		
+		
+		
+		
+		
+		
+		
+		/*
+		
 		String id = "3";
 		Usuario usuario = usuarioDAO.searchByIDLong(Long.parseLong(id));
 		System.out.println(usuario.getNome());

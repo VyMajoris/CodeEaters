@@ -50,9 +50,9 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 	
 	
 	@Override
-	public List<Usuario> BuscarAssistentePorEspecialidadeGPS(String espNome) {
+	public List<Object[]> BuscarAssistentePorEspecialidadeGPS(String espNome) {
 		
-		TypedQuery<Usuario> query = em.createQuery("select NEW package_name.UsuarioGPS(u.id, u.latitude, u.longitude) DISTINCT u.id from Usuario u join u.especialidade e where e.nomeEspecialidade like :espNome and u.isBroadcastingGPS = 1",Usuario.class);
+		TypedQuery<Object[]> query = em.createQuery("select u.id, u.latitude, u.longitude  from Usuario u join u.especialidade e where e.nomeEspecialidade like :espNome and u.isBroadcastingGPS = 1",Object[].class);
 		query.setParameter("espNome", "%"+espNome+"%");
 		
 		return query.getResultList();

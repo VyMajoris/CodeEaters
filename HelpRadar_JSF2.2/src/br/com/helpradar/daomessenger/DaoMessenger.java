@@ -8,13 +8,11 @@ import javax.persistence.EntityManager;
 
 import sun.security.util.BigInt;
 import br.com.helpradar.dao.AvaliacaoDAO;
-
 import br.com.helpradar.dao.EntityManagerFactorySingleton;
 import br.com.helpradar.dao.EspecialidadeDAO;
 import br.com.helpradar.dao.IdentificacaoDAO;
 import br.com.helpradar.dao.UsuarioDAO;
 import br.com.helpradar.dao.impl.AvaliacaoDAOImpl;
-
 import br.com.helpradar.dao.impl.EspecialidadeDAOImpl;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
@@ -35,12 +33,17 @@ public class DaoMessenger {
 
 
 
-	public   List<Usuario> BuscarAssistentePorEspecialidadeGPS(String espNome){
+	public   List<Object[]> BuscarAssistentePorEspecialidadeGPS(String espNome){
 		System.out.println("testeee");
-		List<Usuario> listaUsuarioGPS = usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
-		for (int i = 0; i < listaUsuarioGPS.size(); i++) {
-			System.out.println(listaUsuarioGPS.get(i).toString());
-		}
+		List<Object[]> listaUsuarioGPS = usuarioDAO.BuscarAssistentePorEspecialidadeGPS(espNome);
+		for(Object[] usuario: listaUsuarioGPS){
+	         Long id = (Long)usuario[0];
+	         String lat = (String)usuario[1];
+	         String longi = (String)usuario[2];
+	         
+	         System.out.println("ID> "+ id + " LAT > " + lat+ " LONG > "+longi );
+	      
+	     }
 		return listaUsuarioGPS;
 
 	}

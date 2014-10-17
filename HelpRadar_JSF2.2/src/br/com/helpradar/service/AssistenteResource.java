@@ -9,6 +9,7 @@ import java.util.Map;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -43,11 +44,13 @@ public class AssistenteResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/buscarAssistentePorEspGPS/{espNome}")
 
-	public String getAssistentesGPS(@PathParam("espNome") String espNome){
+	public String buscarAssistentePorEspGPS(@PathParam("espNome") String espNome){
 
-		Map<String,List<Usuario>> mapa = 
-				new HashMap<String, List<Usuario>>();
-		List<Usuario> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
+		Map<String,List<Object[]>> mapa = 
+				new HashMap<String, List<Object[]>>();
+		List<Object[]> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
+		mapa.put("Assistentes", lista);
+		
 		
 		
 		System.out.println("quantidade de assistentes achados: " + lista.size());

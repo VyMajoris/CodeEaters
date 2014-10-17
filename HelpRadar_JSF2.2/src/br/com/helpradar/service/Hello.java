@@ -39,7 +39,7 @@ public class Hello {
 		return "Hello Jersey";
 	}
 
-	@GET
+	/*@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/buscarEspecialidade/{nome}")
 	public String getEspecialidades(@PathParam("nome") String nome){
@@ -59,7 +59,7 @@ public class Hello {
 		//o objeto java em sua representação JSON
 		return new Gson().toJson(mapa);
 	}
-
+*/
 
 
 

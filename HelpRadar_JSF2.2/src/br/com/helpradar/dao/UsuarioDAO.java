@@ -23,7 +23,7 @@ public interface UsuarioDAO extends DAO<Usuario,Integer>{
 	 * @return ID , lat, long<br>
 	 * Use esse método mostrar os assistentes no mapa
 	 */
-	List<Usuario> BuscarAssistentePorEspecialidadeGPS(String espNome);
+	List<Object[]> BuscarAssistentePorEspecialidadeGPS(String espNome);
 
 	Usuario searchByIDLong(Long userId);
 
