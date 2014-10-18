@@ -42,6 +42,7 @@ public class BuscaCliente implements Serializable{
 	
 	public void buscarTodos() {
 		setListaEspecialidade(dao.buscarTodos());
+		
 	}
 
 	public List<Especialidade> getListaEspecialidade() {

@@ -46,7 +46,18 @@ public class PopulaBanco {
 		
 		
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
-		List<Object[]> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("a");
+		
+		Usuario usuarioUpdate = usuarioDAO.searchByIDLong(Long.parseLong("4"));
+		System.out.println(usuarioUpdate.getUserId());
+		usuarioUpdate.setLatitude("99999");
+		usuarioUpdate.setLongitude("88888");
+		usuarioUpdate.setEmail("TESTE UPDATE");
+		//UsuarioDAO.update(usuarioUpdate);
+		
+		usuarioDAO.atualizarGPS(4L, "50", "100");
+
+		
+		/*List<Object[]> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("a");
 		for(Object[] usuario: lista){
 	         Long id = (Long)usuario[0];
 	         String lat = (String)usuario[1];
@@ -56,7 +67,7 @@ public class PopulaBanco {
 	      
 	     }
 		
-		
+		*/
 		
 		
 		

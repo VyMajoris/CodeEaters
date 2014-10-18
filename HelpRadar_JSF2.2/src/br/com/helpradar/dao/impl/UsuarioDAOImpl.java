@@ -6,7 +6,9 @@ import javax.persistence.EntityManager;
 
 
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import br.com.helpradar.dao.UsuarioDAO;
 import br.com.helpradar.entity.Avaliacao;
@@ -25,7 +27,7 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 
 	@Override
 	public List<Avaliacao> buscarAvalicoesPorAssistente(int assistId) {
-		TypedQuery<Avaliacao> query = em.createQuery("Select a from Usuario u join u.avaliacao a where u.id = :AssistID and rownum <= 10  order by dataAvaliacao",Avaliacao.class);
+		TypedQuery<Avaliacao> query = em.createQuery("Select a from Usuario u join u.avaliacao a where u.userId = :AssistID and rownum <= 10  order by dataAvaliacao",Avaliacao.class);
 		query.setParameter("AssistID", assistId);
 		return query.getResultList();
 	}
@@ -52,7 +54,7 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 	@Override
 	public List<Object[]> BuscarAssistentePorEspecialidadeGPS(String espNome) {
 		
-		TypedQuery<Object[]> query = em.createQuery("select u.id, u.latitude, u.longitude  from Usuario u join u.especialidade e where e.nomeEspecialidade like :espNome and u.isBroadcastingGPS = 1",Object[].class);
+		TypedQuery<Object[]> query = em.createQuery("select u.userId, u.latitude, u.longitude  from Usuario u join u.especialidade e where e.nomeEspecialidade like :espNome and u.isBroadcastingGPS = 1",Object[].class);
 		query.setParameter("espNome", "%"+espNome+"%");
 		
 		return query.getResultList();
@@ -69,6 +71,7 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 		return query.getResultList();
 	}
 
+
 	
 	
 	
@@ -79,6 +82,19 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario,Integer> implements UsuarioD
 	public Usuario searchByIDLong(Long userId) {
 		
 		return em.find(Usuario.class, userId);
+	}
+
+
+
+
+	@Override
+	public String atualizarGPS(Long userId, String lat, String longi) {
+		Query query = em.createQuery("update Usuario set userId = :userId, latitude = :lat, longitude = :longi where userId = :userId ");
+		query.setParameter("userId", "%"+userId+"%");
+		query.setParameter("lat", "%"+lat+"%");
+		query.setParameter("longi", "%"+longi+"%");
+		query.executeUpdate();
+		return null;
 	}
 
 

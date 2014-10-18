@@ -2,6 +2,8 @@ package br.com.helpradar.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import br.com.helpradar.entity.Avaliacao;
 import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.Usuario;
@@ -28,6 +30,9 @@ public interface UsuarioDAO extends DAO<Usuario,Integer>{
 	List<Object[]> BuscarAssistentePorEspecialidadeGPS(String espNome);
 
 	Usuario searchByIDLong(Long userId);
+
+	@Transactional
+	String atualizarGPS(Long userId, String lat, String longi);
 
 	
 }
