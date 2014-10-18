@@ -27,5 +27,11 @@ public class EspecialidadeDAOImpl extends DAOImpl<Especialidade,Integer> impleme
 		TypedQuery<Especialidade> query = em.createQuery("from Especialidade",Especialidade.class);
 		return query.getResultList();
 	}
+	
+	@Override
+	public List<String> buscarTodosNomes() {
+		TypedQuery<String> query = em.createQuery("select nomeEspeialdiade from Especialidade",String.class);
+		return query.getResultList();
+	}
 
 }

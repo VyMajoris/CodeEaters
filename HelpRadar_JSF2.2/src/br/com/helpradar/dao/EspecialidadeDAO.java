@@ -9,4 +9,6 @@ public interface EspecialidadeDAO extends DAO<Especialidade,Integer>{
 	List<Especialidade> buscaPorNome(String nome);
 	
 	List<Especialidade> buscarTodos();
+
+	List<String> buscarTodosNomes();
 }

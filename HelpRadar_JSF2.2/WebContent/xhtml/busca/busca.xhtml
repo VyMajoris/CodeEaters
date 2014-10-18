@@ -17,9 +17,6 @@
 	
     <title>Side Menu &amp;ndash; Layout Examples &amp;ndash; Pure</title>
 
-    
-
-
 <div id="layout">
     <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
@@ -46,32 +43,59 @@
         </div>
 
         <div class="content">
-           
-            <p>
-                Entre com a especialidade que deseja pesquisar.
-            </p>
-            
-            <div class="content">
-            <h:form>
-			   <p:outputLabel for="esp" value="especialidade"/>
-			   <p:inputText id="esp" value="#{BuscaCLiente.}"/>
-			   
-			   <p:commandButton value="Buscar" actionListener="#{BuscaCliente.buscarNomes}" update=":tabela"/>
-			   
-			   <p:dataTable value="#{buscaClienteBean.listaEspecialidade}" var="user" id="tabela">
-			   		<p:column headerText="Nome Assistente">
-						<h:outputText value="#{user.nome}" />
+        <h:outputText value="#{buscaAssistenteBean.testJSF}" />
+           <h:form>
+					<h:panelGrid columns="3">
+						<p:outputLabel value="Nome" />
+						
+						<h:inputText value="#{buscaAssistenteBean.nomeEspecialidadeBusca}" />
+							
+						<p:commandButton value="Buscar"
+							actionListener="#{buscaAssistenteBean.buscarPorNomeEspecialidade()}"
+							update=":tabela" />
+					</h:panelGrid>
+				</h:form>
+				
+				<p:dataTable value="#{buscaAssistenteBean.listaAssistente}" var="assit" id="tabela">
+					
+					<p:column headerText="Nome">
+						<h:outputText value="#{assit.nome}" />
 					</p:column>
-			   </p:dataTable>
 
-			</h:form>
-            </div>
-			
-            <div class="content">
-            	<p>
-            		
-            	</p>
-            </div>
+					<p:column headerText="Categoria">
+						<p:rating value="#{assit.email}" disabled="true" stars="10" />
+					</p:column>
+
+					<p:column headerText="CPF">
+						<h:outputText value="#{assit.telefone}" />
+					</p:column>
+					
+				</p:dataTable>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+         
+         
+         
+         
+         
+         
+         
+         
         </div>
     </div>
 </div>
