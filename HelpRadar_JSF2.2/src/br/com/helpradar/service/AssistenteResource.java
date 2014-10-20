@@ -1,9 +1,12 @@
 package br.com.helpradar.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
 
 
 
@@ -42,6 +45,7 @@ import br.com.helpradar.dao.UsuarioDAO;
 import br.com.helpradar.dao.impl.IdentificacaoDAOImpl;
 import br.com.helpradar.dao.impl.UsuarioDAOImpl;
 import br.com.helpradar.daomessenger.DaoMessenger;
+import br.com.helpradar.entity.Avaliacao;
 import br.com.helpradar.entity.Especialidade;
 import br.com.helpradar.entity.Identificacao;
 import br.com.helpradar.entity.Usuario;
@@ -68,33 +72,81 @@ public class AssistenteResource {
 
 		List<Object[]> lista = daom.BuscarAssistentePorEspecialidadeGPS(espNome);
 		List<UsuarioGPS> listaGPS = new ArrayList<UsuarioGPS>();
-		
+
 
 		Map<String,List<UsuarioGPS>> mapa = 
 				new HashMap<String, List<UsuarioGPS>>();
-		
-		
+
 		for (Object[] objects : lista) {
 			UsuarioGPS userGPS = new UsuarioGPS();
 			userGPS.setUserId(objects[0].toString());
 			userGPS.setLat((String) objects[1]);
 			userGPS.setLongi((String) objects[2]);
 			listaGPS.add(userGPS);
-			
+
 		}
 		mapa.put("Assistentes", listaGPS);
-		
-		
-		
-		
+
 		System.out.println("quantidade de assistentes achados: " + lista.size());
 		//Utilizar a biblioteca do google para transformar
 		//o objeto java em sua representação JSON
 		return new Gson().toJson(mapa);
 	}
-	
 
-	
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/buscarAssistentePorId/{assitId}")
+
+	public String  buscarAssistentePorId(@PathParam("assitId") String assitId) throws JSONException{
+		Long espIdLong = Long.parseLong(assitId);
+
+		Usuario assistente = daom.searchUserByIdLong(espIdLong);
+		JSONObject assistenteJObj = new JSONObject();
+		System.out.println(assistente.getUserId());
+		assistenteJObj.put("userId", assistente.getUserId());
+		assistenteJObj.put("nome", assistente.getNome());
+
+		JSONArray especialidadeJArray = new JSONArray();
+		JSONArray avaliacaoJArray = new JSONArray();
+
+		List<Especialidade> listConvertEsp = new ArrayList<Especialidade>(assistente.getEspecialidade());
+		for (Especialidade especialidade : listConvertEsp) {
+			especialidadeJArray.put(especialidade.getNomeEspecialidade());
+		}
+
+		List<Avaliacao> listConvertAval = new ArrayList<Avaliacao>(assistente.getAvaliacao());
+		for (Avaliacao avaliacao : listConvertAval) {
+			JSONObject avalObj = new JSONObject();
+			avalObj.put("titulo", avaliacao.getTitulo());
+			avalObj.put("descricao", avaliacao.getDescricao());
+			avalObj.put("nota", avaliacao.getNota());
+			avalObj.put("nomeespecialidade", avaliacao.getNomeEspecialidade());
+			String data = new SimpleDateFormat( "dd/MM/yyyy'  'HH:mm" ).format( avaliacao.getDataAvaliacao().getTime());
+			avalObj.put("data", data);
+			avaliacaoJArray.put(avalObj);
+
+		}
+
+
+
+
+
+		assistenteJObj.put("especialidades", especialidadeJArray);
+		assistenteJObj.put("avaliacoes", avaliacaoJArray);
+
+
+
+
+
+		return assistenteJObj.toString();
+	}
+
+
+
+
+
+
 
 
 
@@ -114,7 +166,7 @@ public class AssistenteResource {
 		return Response.status(201)
 				.entity("identificacao (identificacao.update) atualizada").build();
 	}
-	
+
 	@POST
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("/atualizarGPS")
@@ -130,10 +182,12 @@ public class AssistenteResource {
 		return Response.status(201)
 				.entity("identificacao (identificacao.update) atualizada").build();
 	}
-	
-	
 
-	
+
+
+
+
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/cadastrarAssistente")

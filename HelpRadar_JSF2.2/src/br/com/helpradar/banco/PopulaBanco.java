@@ -42,9 +42,10 @@ public class PopulaBanco {
 	static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	public static void main(String[] args) {
 		
-		//banco();
+		banco();
 		
 		
+		/* 
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 		
 		Usuario usuarioUpdate = usuarioDAO.searchByIDLong(Long.parseLong("4"));
@@ -57,7 +58,7 @@ public class PopulaBanco {
 		usuarioDAO.atualizarGPS(4L, "50", "100");
 
 		
-		/*List<Object[]> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("a");
+		List<Object[]> lista = usuarioDAO.BuscarAssistentePorEspecialidadeGPS("a");
 		for(Object[] usuario: lista){
 	         Long id = (Long)usuario[0];
 	         String lat = (String)usuario[1];
@@ -67,13 +68,6 @@ public class PopulaBanco {
 	      
 	     }
 		
-		*/
-		
-		
-		
-		
-		
-		/*
 		
 		String id = "3";
 		Usuario usuario = usuarioDAO.searchByIDLong(Long.parseLong(id));
@@ -118,10 +112,6 @@ public class PopulaBanco {
 		//INICIO da persistencia de 3 Avaliacoes
 		Calendar c = Calendar.getInstance();
 
-
-		
-		
-
 		//FIM da persistencia de 3 Avaliacoes
 
 		//INICIO da persistencia de 3 Contato
@@ -157,7 +147,7 @@ public class PopulaBanco {
 		Usuario usuario2 = new Usuario(2L, "Felipe Jose", TipoUsuario.DEFAULT, "2234567890", "emailFelipe@email.com");
 		
 
-		Usuario usuario3 = new  Usuario(3L, "Felipe Jose", TipoUsuario.DEFAULT, "3234567890", "emailEduardo@email.com");
+		Usuario usuario3 = new  Usuario(3L, "Eduardo Araujo", TipoUsuario.DEFAULT, "3234567890", "emailEduardo@email.com");
 		
 		
 		//Esses estão fazendo broadcast
@@ -180,25 +170,15 @@ public class PopulaBanco {
 		usuario6.setLatitude("31.481867");
 		usuario6.setLongitude("-106.451666");
 		
-	
-
-
-
-
-
 		UsuarioDAO usuarioDAO = new UsuarioDAOImpl(em);
 		usuarioDAO.insert(usuario1);
 		usuarioDAO.insert(usuario2);
 		usuarioDAO.insert(usuario3);
 		
 
-
 		usuarioDAO.insert(usuario4);
 		usuarioDAO.insert(usuario5);
 		usuarioDAO.insert(usuario6);
-
-
-
 
 		List<String> listPecas1 = new ArrayList<>();
 		listPecas1.add("ListaDePecasa1");
@@ -263,14 +243,35 @@ public class PopulaBanco {
 
 
 
-
-		Avaliacao avaliacao1 = new Avaliacao(null,"Marravira",c,"Curso de culinária",5);
-		Avaliacao avaliacao2 = new Avaliacao(null,"Era melhor ter visto o filme do Pelé",c,"Carreto",1);
-		Avaliacao avaliacao3 = new Avaliacao(null,"Fatou picar atrás", c, "Corte de Cabelo Gaúcho", 3);
+	
+		Avaliacao avaliacao1 = new Avaliacao(null,"Marravira",c,"Curso de culinária",5,"COZINHEIRO");
+		Avaliacao avaliacao2 = new Avaliacao(null,"Era melhor ter visto o filme do Pelé",c,"Carreto",1,"CARRETO");
+		Avaliacao avaliacao3 = new Avaliacao(null,"Fatou picar atrás", c, "Corte de Cabelo Gaúcho", 3,"CABELEIREIRO");
 		
-		Avaliacao avaliacao4 = new Avaliacao(null,"Sem graça",c,"Palhaço",1);
-		Avaliacao avaliacao5 = new Avaliacao(null,"Coitado, programar em uma linguagem retardada e para um sistema retardado é complicado",c,"App IOS",3);
-		Avaliacao avaliacao6 = new Avaliacao(null,"Achei uma merda", c, "Desentupimento de vaso sanitário", 5);
+		
+	
+		
+		Avaliacao avaliacao4 = new Avaliacao(null,"Sem graça",c,"Palhaço",1,"PALHAÇO");
+		Avaliacao avaliacao5 = new Avaliacao(null,"Coitado, programar em uma linguagem retardada e para um sistema retardado é complicado",c,"App IOS",3,"PROGRAMADOR");
+		Avaliacao avaliacao6 = new Avaliacao(null,"Achei uma merda", c, "Desentupimento de vaso sanitário", 5,"ENCANADOR");
+		
+		
+		
+		// BROADCASTING
+		Avaliacao avaliacao7 = new Avaliacao(null,"DESCRICAO avaliacao7 avaliacao7 avaliacao7 avaliacao7 avaliacao7 avaliacao7",c,"avaliacao7",5,"ESPECIALIDADE 1A");
+		Avaliacao avaliacao8 = new Avaliacao(null,"DESCRICAO avaliacao8 avaliacao8 avaliacao8 avaliacao8 avaliacao8 avaliacao8",c,"avaliacao8",1,"ESPECIALIDADE 2A");
+		Avaliacao avaliacao9 = new Avaliacao(null,"DESCRICAO avaliacao9 avaliacao9 avaliacao9 avaliacao9 avaliacao9 avaliacao9", c, "avaliacao9", 3,"ESPECIALIDADE 3A");
+		
+	
+		Avaliacao avaliacao10 = new Avaliacao(null,"DESCRICAO avaliacao10 avaliacao10 avaliacao10 avaliacao10 avaliacao10 avaliacao10 ",c,"avaliacao10",5, "ESPECIALIDADE 1B");
+		Avaliacao avaliacao11 = new Avaliacao(null,"DESCRICAO avaliacao11 avaliacao11 avaliacao11 avaliacao11 avaliacao11 avaliacao11",c,"avaliacao11",1, "ESPECIALIDADE 2B");
+		Avaliacao avaliacao12 = new Avaliacao(null,"DESCRICAO avaliacao12 avaliacao12 avaliacao12 avaliacao12 avaliacao12 avaliacao12", c, "avaliacao12",3 ,"ESPECIALIDADE 3B");
+		
+		Avaliacao avaliacao13 = new Avaliacao(null,"DESCRICAO avaliacao13 avaliacao13 avaliacao13 avaliacao13 avaliacao13 avaliacao13",c,"avaliacao13",5 , "ESPECIALIDADE 1C");
+		Avaliacao avaliacao14 = new Avaliacao(null,"DESCRICAO avaliacao14 avaliacao14 avaliacao14 avaliacao14 avaliacao14 avaliacao14 ",c,"avaliacao14",1 ,"ESPECIALIDADE 2C");
+		Avaliacao avaliacao15 = new Avaliacao(null,"DESCRICAO avaliacaO15 avaliacaO15 avaliacaO15 avaliacaO15 avaliacaO15 avaliacaO15", c, "avaliacaO15", 3, "ESPECIALIDADE 3C");
+		
+		
 		
 		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAOImpl(em);
 		avaliacaoDAO.insert(avaliacao1);
@@ -280,7 +281,27 @@ public class PopulaBanco {
 		avaliacaoDAO.insert(avaliacao5);
 		avaliacaoDAO.insert(avaliacao6);
 		
+		avaliacaoDAO.insert(avaliacao7);
+		avaliacaoDAO.insert(avaliacao8);
+		avaliacaoDAO.insert(avaliacao9);
+		usuario4.getAvaliacao().add(avaliacao7);
+		usuario4.getAvaliacao().add(avaliacao8);
+		usuario4.getAvaliacao().add(avaliacao9);
 		
+		avaliacaoDAO.insert(avaliacao10);
+		avaliacaoDAO.insert(avaliacao11);
+		avaliacaoDAO.insert(avaliacao12);
+		usuario5.getAvaliacao().add(avaliacao10);
+		usuario5.getAvaliacao().add(avaliacao11);
+		usuario5.getAvaliacao().add(avaliacao12);
+		
+		
+		avaliacaoDAO.insert(avaliacao13);
+		avaliacaoDAO.insert(avaliacao14);
+		avaliacaoDAO.insert(avaliacao15);
+		usuario6.getAvaliacao().add(avaliacao13);
+		usuario6.getAvaliacao().add(avaliacao14);
+		usuario6.getAvaliacao().add(avaliacao15);
 		
 		
 		usuario2.setTipoUsuario(TipoUsuario.ASSISTENTE);

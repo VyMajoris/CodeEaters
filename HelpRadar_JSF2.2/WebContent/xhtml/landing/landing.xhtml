@@ -23,6 +23,16 @@
 
 
 
+	<script type="text/javascript">
+	$(function(){
+		$("#fblogin").click(function(){
+		alert("click")
+			})
+		})
+
+	
+	</script>
+
 
 
 
@@ -36,11 +46,11 @@
 
 
 	<ui:define name="content">
-	
-	
+
+
 		<!-- ***********SCRITP DO FACEBOOK. WebContent/resources/js/fb.js -->
 		<h:outputScript library="js" name="fb.js" />
-		
+
 
 
 		<h:outputStylesheet name="layouts/marketing.css" library="css" />
@@ -51,10 +61,11 @@
 		<div class="header">
 			<div
 				class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-				<a class="pure-menu-heading" href="">AM CODEEATERS 2TDSB 2014</a>
+				<a id="start" class="pure-menu-heading" href="">AM CODEEATERS 2TDSB 2014</a>
 
+				
 				<h:outputText styleClass="pure-menu-heading working-fix-displayName"
-					id="userDisplayName" value=""></h:outputText>
+					id="userDisplayName" ></h:outputText>
 
 
 				<ul>
@@ -62,9 +73,20 @@
 
 
 					<li>
-					<!-- ***********LOGIN DO FACEBOOK VAI AQUI -->
+						<!-- ***********LOGIN DO FACEBOOK VAI AQUI --> <a href="#"
+						id="fblogin"><h:graphicImage  id="fbimglogin" value="/resources/img/fblogin.png" />
+						</a>
+						
+						
+						
+					</li>
+					<li>
+						<!-- ***********LOGIN DO FACEBOOK VAI AQUI --> <a href="#"
+						id="fblogout"><h:graphicImage  id="fbimglogout" value="/resources/img/fblogout.png" /></a>
 
 					</li>
+
+
 
 
 
@@ -81,14 +103,18 @@
 
 		<div class="working-fix-image splash-container">
 			<div class="splash working-fix-top-margin">
-				<h:graphicImage width="250" library="img" name="common/HRLOGO.png"></h:graphicImage>
-
+				
+				<h:graphicImage value="/resources/img/common/ic_icon.png">
+				</h:graphicImage>
 				<h1 class="splash-head">HELP RADAR</h1>
 				<p class="splash-subhead">Find the help you need.</p>
 
 				<p>
-					<a href="http://purecss.io" class="pure-button pure-button-primary">Get
-						Started</a>
+					<h:commandLink action="#{HelpRadarBean.manage}"  
+							rendered="#{sessionScope.usuario != null}">
+							<h:outputText value="Logout" />
+						</h:commandLink>>
+					<a href="" class="pure-button-primary pure-button ">Ache!</a>
 				</p>
 			</div>
 

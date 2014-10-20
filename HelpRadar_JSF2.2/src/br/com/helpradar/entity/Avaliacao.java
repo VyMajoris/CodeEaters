@@ -34,13 +34,14 @@ public class Avaliacao implements Serializable  {
 	 * @param nota
 	 */
 	public Avaliacao(Set<Usuario> usuario, String descricao,
-			Calendar dataAvaliacao, String titulo, Integer nota) {
+			Calendar dataAvaliacao, String titulo, Integer nota, String nomeEspecialidade ) {
 		super();
 		this.usuario = usuario;
 		this.descricao = descricao;
 		this.dataAvaliacao = dataAvaliacao;
 		this.titulo = titulo;
 		this.nota = nota;
+		this.nomeEspecialidade = nomeEspecialidade;
 	}
 	
 	public Avaliacao(){
@@ -62,6 +63,8 @@ public class Avaliacao implements Serializable  {
 	private Calendar dataAvaliacao;
 
 	private String titulo;
+	
+	private String nomeEspecialidade;
 
 
 	// 1..5 Integer. para poder ser null
@@ -72,13 +75,14 @@ public class Avaliacao implements Serializable  {
 	
 
 	public Avaliacao(int id, String descricao, Calendar dataAvaliacao,
-			String titulo, Integer nota) {
+			String titulo, Integer nota, String nomeEspecialidade) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.dataAvaliacao = dataAvaliacao;
 		this.titulo = titulo;
 		this.nota = nota;
+		this.nomeEspecialidade = nomeEspecialidade;
 	}
 
 
@@ -143,6 +147,14 @@ public class Avaliacao implements Serializable  {
 
 	public void setUsuario(Set<Usuario> usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getNomeEspecialidade() {
+		return nomeEspecialidade;
+	}
+
+	public void setNomeEspecialidade(String nomeEspecialidade) {
+		this.nomeEspecialidade = nomeEspecialidade;
 	}
 
 
